@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import path from 'path';
+import { CreateDb, AjouteLigneCustom, LireDBCustom , getAllEvents, getEventsByMonth, importDB} from "./services/databse";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -26,9 +27,9 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
-
+getEventsByMonth
 // This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
+// initialization and is ready tcreateTableo create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
@@ -48,6 +49,10 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+CreateDb();
+importDB();
+console.log(getEventsByMonth());
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

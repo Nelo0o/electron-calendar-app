@@ -1,1 +1,0 @@
-// eventDetail.ts

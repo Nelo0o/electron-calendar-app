@@ -21,9 +21,11 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/plugin-vite": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@types/better-sqlite3": "^7.6.11",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "electron": "31.3.0",
+    "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "ts-node": "^10.9.2",
@@ -37,6 +39,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "better-sqlite3": "^11.1.2",
+    "electron-squirrel-startup": "^1.0.1",
+    "sqlite3": "^5.1.7"
   }
 }

@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { CreateDb, importDB} from "./services/database";
 
@@ -28,6 +28,18 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
+ipcMain.on('open-event-modal', (event, arg) => {
+  const eventModal = new BrowserWindow({
+    width: 400,
+    height: 400,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload-event.js'),
+    },
+  });
+  eventModal.loadFile(path.join(__dirname, '/pages/event.html'));
+});
+
+getEventsByMonth
 // This method will be called when Electron has finished
 // initialization and is ready tcreateTableo create browser windows.
 // Some APIs can only be used after this event occurs.

@@ -1,10 +1,13 @@
+import { IEvent } from "./interfaces/IEvents"
+
 export { }
 declare global {
     interface Window {
         "electron": {
-            ajout: (nom: string, prenom: string) => Promise<string>
-            getAll: () => Promise<iEvent[]>
-            deleteUser: (id: number) => Promise<string>
+            getAllEvents: () => Promise<IEvent[]>
+            ajoutEvent: (params: IEvent) => Promise<string>
+            supprimeEvent: (id: number) => Promise<string>
+            modifieEvent: (id: number) => Promise<string>
         }
     }
 }

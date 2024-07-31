@@ -11,3 +11,4 @@ contextBridge.exposeInMainWorld('electron', {
     openEventModal: (date: string) => ipcRenderer.send('open-event-modal', { date })
     
 })
+ 

@@ -31,13 +31,13 @@ const createWindow = () => {
 
 ipcMain.on('open-event-modal', (event, arg) => {
   const eventModal = new BrowserWindow({
-    width: 400,
-    height: 400,
+    width: 900,
+    height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload-event.js'),
+      preload: path.join(__dirname, 'event-preload.js'),
     },
   });
-  eventModal.loadFile(path.join(__dirname, '/pages/event.html'));
+  eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
 });
 
 // This method will be called when Electron has finished

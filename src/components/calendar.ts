@@ -30,7 +30,7 @@ function renderCalendar(month: Date): void {
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal("TOTO");
+                    window.electron.openEventModal(day);
                 });
 
                 if (day >= startMonth && day <= endMonth) {

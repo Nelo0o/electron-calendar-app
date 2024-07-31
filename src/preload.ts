@@ -8,6 +8,6 @@ contextBridge.exposeInMainWorld('electron', {
     ajoutEvent: (params: IEvent) => ipcRenderer.invoke('ajout-event', params),
     supprimeEvent: (id: number) => ipcRenderer.invoke('supprime-event', id),
     modifieEvent: (id: number) => ipcRenderer.invoke('modif-event', id),
-    openEventModal: (date: string) => ipcRenderer.send('open-event-modal', { date })
+    openEventModal: (date: Date) => ipcRenderer.send('open-event-modal', { date })
     
 })

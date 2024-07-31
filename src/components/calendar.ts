@@ -1,5 +1,6 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
+import { IEvent } from 'src/interfaces/IEvents';
 
 console.log("calendar api", window.electron);
 
@@ -12,11 +13,25 @@ let currentMonth: Date = new Date();
 
 function fillEvents(month: Date): void {
 
-    const lesEvents = window.electron.getAllEvents;
+    /*const lesEvents =  window.electron.getAllEvents().then((event) => {
+     const lejour: HTMLElement = document.getElementById(event.date);
 
+        
+        lejour.classList.add('event');
+        lejour.addEventListener('click', () => {
+            window.electron.openEventModal(event.id);
+        })    
+    })*/
+
+
+    const lesEvents =  window.electron.getAllEvents()
+    
     lesEvents.forEach(event => {
+        console.log(event.date)
+
         const lejour: HTMLElement = document.getElementById(event.date);
 
+        
         lejour.classList.add('event');
         lejour.addEventListener('click', () => {
             window.electron.openEventModal(event.id);
@@ -64,6 +79,8 @@ function renderCalendar(month: Date): void {
             calendarContent.classList.add('is-visible');
         }, 200);
     }
+
+    fillEvents(month)
 }
 
 function updateMonthDisplay(month: Date): void {

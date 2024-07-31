@@ -5,7 +5,7 @@ import { BrowserWindow } from "electron/main";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 ipcMain.handle('get-all-events', async () => {
-    const events = await getAllEvents()
+    const events = getAllEvents()
     if (Array.isArray(events)) return events
     return []
 })

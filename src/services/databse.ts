@@ -17,7 +17,7 @@ export function CreateDb(): void {
     const createTable = db.prepare(rqCreate);
 
     const logCreate =  createTable.run();
-    console.log(logCreate);
+    console.log("Création de la table : "+logCreate);
 }
 
 
@@ -75,8 +75,22 @@ export function getEventsByMonth(leMois ="06"): object {
 
 export function importDB(): void {
     const db = new Database('agenda.db');
+    const filePath = path.join(__dirname, `./message.txt`);
 
-    const migration = fs.readFileSync(path.join(__dirname, `./message.txt`), 'utf8');
-    
+    if (!fs.existsSync(filePath)) {
+        console.warn(`Fichier introuvable: ${filePath}. Création d'un fichier par défaut.`);
+        const defaultContent = `
+        CREATE TABLE IF NOT EXISTS evenements (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titre TEXT NOT NULL,
+            description TEXT NOT NULL,
+            date DATE,
+            time TIME
+        );
+        `;
+        fs.writeFileSync(filePath, defaultContent, 'utf8');
+    }
+
+    const migration = fs.readFileSync(filePath, 'utf8');
     db.exec(migration);
 }

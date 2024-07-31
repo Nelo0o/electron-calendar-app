@@ -1,6 +1,10 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
-import { CreateDb, AjouteLigneCustom, LireDBCustom , getAllEvents, getEventsByMonth, importDB} from "./services/databse";
+import { CreateDb, importDB} from "./services/database";
+import { readICS } from './services/importICS';
+import { getAllEvents } from './services/readDB';
+import './services/ipcService'
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -27,7 +31,18 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
-getEventsByMonth
+
+ipcMain.on('open-event-modal', (event, arg) => {
+  const eventModal = new BrowserWindow({
+    width: 900,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'event-preload.js'),
+    },
+  });
+  eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready tcreateTableo create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -49,10 +64,6 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-CreateDb();
-importDB();
-console.log(getEventsByMonth());
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

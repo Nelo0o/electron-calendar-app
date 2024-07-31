@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ajouter un événement</title>
+    <link rel="stylesheet" href="../../styles/index.css">
+</head>
+
+<body>
+    <h2>Nouvel Événement</h2>
+    <form>
+        <label for="eventTitle">Titre</label>
+        <input type="text" id="eventTitle" name="eventTitle">
+        <label for="eventDate">Date</label>
+        <input type="date" id="eventDate" name="eventDate">
+        <label for="eventDescription">Description</label>
+        <textarea id="eventDescription" name="eventDescription"></textarea>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <script type="module" src="event-renderer.ts"></script> 
+</body>
+ 
+</html>

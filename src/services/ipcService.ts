@@ -1,14 +1,10 @@
-import { ipcMain } from "electron";
+import { BrowserWindow, ipcMain } from "electron";
 import { getAllEvents } from "./readDB";
 import { IEvent } from "src/interfaces/IEvents";
-import { BrowserWindow } from "electron/main";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
-ipcMain.handle('get-all-events', async () => {
-    const events = await getAllEvents()
-    if (Array.isArray(events)) return events
-    return []
-})
+
+ipcMain.handle('get-all-events', getAllEvents) 
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {
     const win = BrowserWindow.fromWebContents(evt.sender)

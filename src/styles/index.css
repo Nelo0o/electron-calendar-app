@@ -51,6 +51,23 @@ body {
   transition: opacity 0.2s ease-in-out;
 }
 
+.event {
+  color: rgb(255, 255, 255);
+}
+
+.day.event::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0b3c69;
+  transform: scale(1);
+  z-index: -1;
+  border-radius: 40%;
+}
+
 
 .day {
   position: relative;

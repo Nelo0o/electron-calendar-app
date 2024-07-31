@@ -1,8 +1,9 @@
 import Database from 'better-sqlite3';
+import { IEvent } from 'src/interfaces/IEvents';
+
+const db = new Database('agenda.db');
 
 export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object  {
-
-    const db = new Database('agenda.db');
 
     const rqLire = 'SELECT '+lesCollones+' FROM '+laTable;
 
@@ -14,9 +15,7 @@ export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object 
 }
 
 
-export function getAllEvents(): Array<Object> {
-
-    const db = new Database('agenda.db');
+export function getAllEvents() {
 
     const rqLire = 'SELECT * FROM evenements';
 
@@ -29,8 +28,6 @@ export function getAllEvents(): Array<Object> {
 
 export function getEventsByMonth(leMois: Date): Array<Object> {
 
-    const db = new Database('agenda.db');
-
     const rqLire = "SELECT * FROM evenements WHERE strftime('%m', date) = '"+leMois+"'";
 
     const lireLigne = db.prepare(rqLire);
@@ -41,8 +38,6 @@ export function getEventsByMonth(leMois: Date): Array<Object> {
 }
 
 export function getEventsById(id : number): Array<Object> {
-
-    const db = new Database('agenda.db');
 
     const rqLire = "SELECT * FROM evenements WHERE id ="+id+"";
 

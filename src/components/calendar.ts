@@ -17,31 +17,58 @@ function renderCalendar(month: Date): void {
     const days: Date[] = eachDayOfInterval({ start: startDate, end: endDate });
 
     if (calendarContent) {
-        calendarContent.innerHTML = '';
+        calendarContent.classList.add('transition');
 
-        days.forEach(day => {
-            const dayElement: HTMLDivElement = document.createElement('div');
-            dayElement.className = 'day';
-            dayElement.textContent = format(day, 'd');
-            calendarContent.appendChild(dayElement);
-            if (isSameDay(day, new Date())) {
-                dayElement.classList.add('currentDay');
-            }
-        });
+        setTimeout(() => {
+            calendarContent.innerHTML = '';
+
+            days.forEach(day => {
+                const dayElement: HTMLDivElement = document.createElement('div');
+                dayElement.className = 'day';
+                dayElement.textContent = format(day, 'd');
+
+                if (day >= startMonth && day <= endMonth) {
+                    calendarContent.appendChild(dayElement);
+                    if (isSameDay(day, new Date())) {
+                        dayElement.classList.add('currentDay');
+                    }
+                } else {
+                    dayElement.classList.add('otherMonthDay');
+                    calendarContent.appendChild(dayElement);
+                }
+            });
+            calendarContent.classList.remove('transition');
+            calendarContent.classList.add('is-visible');
+        }, 200);
+    }
+}
+
+function updateMonthDisplay(month: Date): void {
+    if (currentMonthDisplay) {
+        currentMonthDisplay.classList.add('transition');
+
+        setTimeout(() => {
+            currentMonthDisplay.textContent = format(month, 'MMMM yyyy');
+            currentMonthDisplay.classList.remove('transition');
+            currentMonthDisplay.classList.add('is-visible');
+        }, 200);
     }
 }
 
 if (currentMonthDisplay) {
+    currentMonthDisplay.classList.add('transition');
     currentMonthDisplay.textContent = format(currentMonth, 'MMMM yyyy');
+    setTimeout(() => {
+        currentMonthDisplay.classList.remove('transition');
+        currentMonthDisplay.classList.add('is-visible');
+    }, 200);
 }
 
 if (prevMonthButton) {
     prevMonthButton.addEventListener('click', () => {
         currentMonth = subMonths(currentMonth, 1);
         renderCalendar(currentMonth);
-        if (currentMonthDisplay) {
-            currentMonthDisplay.textContent = format(currentMonth, 'MMMM yyyy');
-        }
+        updateMonthDisplay(currentMonth);
     });
 }
 
@@ -49,10 +76,12 @@ if (nextMonthButton) {
     nextMonthButton.addEventListener('click', () => {
         currentMonth = addMonths(currentMonth, 1);
         renderCalendar(currentMonth);
-        if (currentMonthDisplay) {
-            currentMonthDisplay.textContent = format(currentMonth, 'MMMM yyyy');
-        }
+        updateMonthDisplay(currentMonth);
     });
+}
+
+if (calendarContent) {
+    calendarContent.classList.add('is-visible');
 }
 
 renderCalendar(currentMonth);

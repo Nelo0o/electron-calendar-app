@@ -1,11 +1,11 @@
 import Database from 'better-sqlite3';
 
 
-export function AjouteLigneCustom(laTable = 'evenements', lesChamps = "titre, description, date, time", lesValeurs = "'letitre', 'ladesc', '2024-07-30', '16:55:00'"): void  {
+export function AjouteLigneCustom(laTable = 'evenements', lesChamps = "titre, description, date, time", lesValeurs = "('letitre', 'ladesc', '2024-07-30', '16:55:00')"): void  {
 
     const db = new Database('agenda.db');
 
-    const rqAjout = "INSERT INTO "+laTable+" ("+lesChamps+") VALUES ("+lesValeurs+")";
+    const rqAjout = "INSERT INTO "+laTable+" ("+lesChamps+") VALUES "+lesValeurs+"";
 
     const addRow = db.prepare(rqAjout);
 

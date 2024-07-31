@@ -24,7 +24,7 @@ export function importDB(): void {
     
     CreateDb()
     const db = new Database('agenda.db');
-    const filePath = path.join(__dirname, `./message.txt`);
+    const filePath = path.join(__dirname, `../../assets/message.txt`);
 
     if (fs.existsSync(filePath)) {
         const migration = fs.readFileSync(filePath, 'utf8');

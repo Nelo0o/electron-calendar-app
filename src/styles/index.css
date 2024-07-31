@@ -41,6 +41,17 @@ body {
   gap: 20px;
 }
 
+.transition {
+  opacity: 0 !important;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.is-visible {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+
 .day {
   position: relative;
   padding: 30px;
@@ -65,6 +76,10 @@ body {
 
 .currentDay {
   color: var(--primary-color);
+}
+
+.otherMonthDay {
+  opacity: 0.5;
 }
 
 .day.currentDay::after {
@@ -167,4 +182,3 @@ body {
   transition: 0.4s;
   transform: translateX(-56px);
 }
-

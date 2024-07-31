@@ -14,7 +14,7 @@ export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object 
 }
 
 
-export function getAllEvents(): object {
+export function getAllEvents(): Array<Object> {
 
     const db = new Database('agenda.db');
 
@@ -27,7 +27,7 @@ export function getAllEvents(): object {
     return lesLignes;
 }
 
-export function getEventsByMonth(leMois ="06"): object {
+export function getEventsByMonth(leMois: Date): Array<Object> {
 
     const db = new Database('agenda.db');
 
@@ -40,7 +40,7 @@ export function getEventsByMonth(leMois ="06"): object {
     return lesLignes;
 }
 
-export function getEventsById(id : number): object {
+export function getEventsById(id : number): Array<Object> {
 
     const db = new Database('agenda.db');
 

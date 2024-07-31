@@ -10,6 +10,22 @@ const currentMonthDisplay: HTMLElement | null = document.getElementById('current
 
 let currentMonth: Date = new Date();
 
+function fillEvents(month: Date): void {
+
+    const lesEvents = window.electron.getAllEvents;
+
+    lesEvents.forEach(event => {
+        const lejour: HTMLElement = document.getElementById(event.date);
+
+        lejour.classList.add('event');
+        lejour.addEventListener('click', () => {
+            window.electron.openEventModal(event.id);
+        })
+
+    })
+}
+
+
 function renderCalendar(month: Date): void {
     const startMonth: Date = startOfMonth(month);
     const endMonth: Date = endOfMonth(month);
@@ -18,7 +34,7 @@ function renderCalendar(month: Date): void {
 
     const days: Date[] = eachDayOfInterval({ start: startDate, end: endDate });
 
-    if (calendarContent) {
+    if (calendarContent) {month: Date
         calendarContent.classList.add('transition');
 
         setTimeout(() => {

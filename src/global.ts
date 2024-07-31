@@ -4,7 +4,7 @@ export { }
 declare global {
     interface Window {
         "electron": {
-            getAllEvents: () => Array<Object>
+            getAllEvents: () => Array<IEvent>
             ajoutEvent: (params: IEvent) => Promise<string>
             supprimeEvent: (id: number) => Promise<string>
             modifieEvent: (id: number) => Promise<string>

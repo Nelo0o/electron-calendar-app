@@ -3,6 +3,8 @@ import path from 'path';
 import { CreateDb, importDB} from "./services/database";
 import { readICS } from './services/importICS';
 import { getAllEvents } from './services/readDB';
+import './services/ipcService'
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {

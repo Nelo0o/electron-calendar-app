@@ -13,31 +13,22 @@ let currentMonth: Date = new Date();
 
 function fillEvents(month: Date): void {
 
-    /*const lesEvents =  window.electron.getAllEvents().then((event) => {
-     const lejour: HTMLElement = document.getElementById(event.date);
+    const lesEvents =  window.electron.getAllEvents().then((event) => {
 
-        
-        lejour.classList.add('event');
-        lejour.addEventListener('click', () => {
-            window.electron.openEventModal(event.id);
-        })    
-    })*/
-
-
-    const lesEvents =  window.electron.getAllEvents()
+        event.forEach(lEvent => {
     
-    lesEvents.forEach(event => {
-        console.log(event.date)
-
-        const lejour: HTMLElement = document.getElementById(event.date);
-
-        
-        lejour.classList.add('event');
-        lejour.addEventListener('click', () => {
-            window.electron.openEventModal(event.id);
+            if (document.getElementById(lEvent.date)) {
+                console.log(lEvent.id, lEvent.date)
+                const lejour: HTMLElement = document.getElementById(lEvent.date);
+                lejour.classList.add('event');
+                lejour.addEventListener('click', () => {
+                    window.electron.openEventModal(lEvent.id);
+                })
+            }
+           
         })
-
     })
+
 }
 
 
@@ -49,6 +40,7 @@ function renderCalendar(month: Date): void {
 
     const days: Date[] = eachDayOfInterval({ start: startDate, end: endDate });
 
+    
     if (calendarContent) {month: Date
         calendarContent.classList.add('transition');
 
@@ -58,7 +50,13 @@ function renderCalendar(month: Date): void {
             days.forEach(day => {
                 const dayElement: HTMLDivElement = document.createElement('div');
                 dayElement.className = 'day';
-                dayElement.setAttribute("id", day.getDate()+"/"+day.getMonth()+"/"+day.getFullYear());
+                let lejour = "";
+                if (day.getMonth() >= 10) {
+                    lejour = ""+day.getMonth()
+                } else {
+                    lejour = "0"+day.getMonth()
+                }
+                dayElement.setAttribute("id", day.getDate()+"/"+lejour+"/"+day.getFullYear());
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
@@ -77,10 +75,11 @@ function renderCalendar(month: Date): void {
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');
+            fillEvents(month);
         }, 200);
     }
 
-    fillEvents(month)
+
 }
 
 function updateMonthDisplay(month: Date): void {

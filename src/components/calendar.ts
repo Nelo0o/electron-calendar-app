@@ -27,10 +27,11 @@ function renderCalendar(month: Date): void {
             days.forEach(day => {
                 const dayElement: HTMLDivElement = document.createElement('div');
                 dayElement.className = 'day';
+                dayElement.setAttribute("id", day.getDate()+"/"+day.getMonth()+"/"+day.getFullYear());
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal("TOTO");
+                    window.electron.openEventModal(day);
                 });
 
                 if (day >= startMonth && day <= endMonth) {

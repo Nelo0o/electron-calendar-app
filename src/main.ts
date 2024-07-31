@@ -40,7 +40,6 @@ ipcMain.on('open-event-modal', (event, arg) => {
   eventModal.loadFile(path.join(__dirname, '/pages/event.html'));
 });
 
-getEventsByMonth
 // This method will be called when Electron has finished
 // initialization and is ready tcreateTableo create browser windows.
 // Some APIs can only be used after this event occurs.

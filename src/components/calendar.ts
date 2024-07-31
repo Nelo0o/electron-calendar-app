@@ -1,7 +1,7 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
 
-console.log("calendar api", window.calendar);
+console.log("calendar api", window.electron);
 
 const calendarContent: HTMLElement | null = document.getElementById('calendarContent');
 const prevMonthButton: HTMLElement | null = document.getElementById('prevMonth');
@@ -30,7 +30,7 @@ function renderCalendar(month: Date): void {
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.calendar.openEventModal("TOTO");
+                    window.electron.openEventModal("TOTO");
                 });
 
                 if (day >= startMonth && day <= endMonth) {

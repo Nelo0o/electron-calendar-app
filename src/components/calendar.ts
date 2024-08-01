@@ -1,6 +1,5 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
-import { IEvent } from 'src/interfaces/IEvents';
 
 console.log("calendar api", window.electron);
 
@@ -13,7 +12,7 @@ let currentMonth: Date = new Date();
 
 function fillEvents(month: Date): void {
 
-    const lesEvents =  window.electron.getAllEvents().then((event) => {
+    window.electron.getAllEvents().then((event) => {
 
         event.forEach(lEvent => {
     

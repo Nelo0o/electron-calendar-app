@@ -5,10 +5,10 @@ import { IEvent } from "./interfaces/IEvents";
 
 contextBridge.exposeInMainWorld('electron', {
     getAllEvents: () => ipcRenderer.invoke('get-all-events'),
+    getEventsById: (id: number) => ipcRenderer.invoke('get-event-id', id),
     ajoutEvent: (params: IEvent) => ipcRenderer.invoke('ajout-event', params),
     supprimeEvent: (id: number) => ipcRenderer.invoke('supprime-event', id),
     modifieEvent: (id: number) => ipcRenderer.invoke('modif-event', id),
     openEventModal: (date: Date) => ipcRenderer.send('open-event-modal', { date })
     
 })
- 

@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import { CreateDb, importDB} from "./services/database";
 import { readICS } from './services/importICS';
-import { getAllEvents } from './services/readDB';
+import { getAllEvents, getEventsById } from './services/readDB';
 import './services/ipcService'
 
 
@@ -74,4 +74,6 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 // CreateDb();
-// importDB();
+//importDB();
+//console.log(getEventsById(10))
+readICS();

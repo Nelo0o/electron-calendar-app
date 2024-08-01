@@ -13,12 +13,6 @@ export function readICS() : void {
     let lesValues = "";
 
     for (const event of Object.values(events)) {
-        /*console.log(
-            'Summary: ' + event.summary +
-            '\nDescription: ' + event.description +
-            '\nStart Date: ' + event.start +
-            '\n' 
-        );*/
 
         const dateFR = new Intl.DateTimeFormat("fr-FR", {
             dateStyle: "short",
@@ -36,7 +30,8 @@ export function readICS() : void {
                 lesValues += ", ('"+titre+"', '"+description+"', '"+date+"', '"+time+"')"
             }
         }
-    };
+    }
+    console.log(lesValues)
 
     if (lesValues != "") {
         AjouteLigneCustom("evenements", "titre, description, date, time", lesValues)

@@ -40,7 +40,12 @@ ipcMain.on('open-event-modal', (event, arg) => {
       preload: path.join(__dirname, 'event-preload.js'),
     },
   });
-  eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
+
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    eventModal.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/event/event.html`);
+  } else {
+    eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
+  }
 });
 
 // This method will be called when Electron has finished
@@ -67,3 +72,6 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+// CreateDb();
+// importDB();

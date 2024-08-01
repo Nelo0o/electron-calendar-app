@@ -9,9 +9,10 @@ declare global {
             supprimeEvent: (id: number) => Promise<string>
             modifieEvent: (id: number) => Promise<string>
             openEventModal: (id: number) => void
-        }
-        "modale": {
-            getEventById: (id: number) => IEvent
+            getEventById: (id: number) => Promise<IEvent[]>
+            send: (id: number) => number
+            receive: (id: number) => number
+            getEventId: () => Promise<any>
         }
     }
 }

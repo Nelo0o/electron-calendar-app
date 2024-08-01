@@ -1,5 +1,6 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
+import { ipcRenderer, ipcMain } from 'electron';
 
 console.log("calendar api", window.electron);
 
@@ -15,7 +16,6 @@ function fillEvents(month: Date): void {
         events.forEach((lEvent: IEvent) => {
             const lejour: HTMLElement | null = document.getElementById(lEvent.date);
             if (lejour) {
-                console.log(lEvent.id, lEvent.date);
                 lejour.classList.add('event');
                 lejour.addEventListener('click', () => {
                     window.electron.openEventModal(lEvent.id);
@@ -56,7 +56,7 @@ function renderCalendar(month: Date): void {
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal(day);
+                    window.electron.openEventModal(0);
                 });
 
                 if (day >= startMonth && day <= endMonth) {

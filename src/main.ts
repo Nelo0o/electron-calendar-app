@@ -16,6 +16,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    icon: 'assets/icon-logo.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -36,6 +37,7 @@ ipcMain.on('open-event-modal', (event, arg) => {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
+    icon: 'assets/icon-logo.ico',
     webPreferences: {
       preload: path.join(__dirname, 'event-preload.js'),
     },

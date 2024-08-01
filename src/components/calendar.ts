@@ -1,5 +1,6 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
+import { ipcRenderer, ipcMain } from 'electron';
 
 console.log("calendar api", window.electron);
 
@@ -73,7 +74,7 @@ function renderCalendar(month: Date): void {
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal(day);
+                    window.electron.openEventModal(0);
                 });
 
                 if (day >= startMonth && day <= endMonth) {

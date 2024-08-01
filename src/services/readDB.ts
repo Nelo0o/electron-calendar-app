@@ -36,7 +36,7 @@ export function getEventsByMonth(leMois: Date) {
     return lesLignes;
 }
 
-export function getEventsById(id : number) {
+export function getEventById(id : number) {
 
     const rqLire = "SELECT * FROM evenements WHERE id ="+id+"";
 

@@ -1,8 +1,7 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron';
 import path from 'path';
 import { CreateDb, importDB} from "./services/database";
-import { readICS } from './services/importICS';
-import { getAllEvents, getEventsById } from './services/readDB';
+import { getEventById } from './services/readDB';
 import './services/ipcService'
 
 
@@ -39,15 +38,23 @@ ipcMain.on('open-event-modal', (event, arg) => {
     height: 600,
     icon: 'assets/icon-logo.ico',
     webPreferences: {
-      preload: path.join(__dirname, 'event-preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
+    
   });
+
+  eventModal.webContents.openDevTools();
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
     eventModal.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/event/event.html`);
   } else {
     eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
   }
+
+  if (parseInt(arg) != 0) {
+    eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
+  }
+  
 });
 
 // This method will be called when Electron has finished
@@ -72,10 +79,11 @@ app.on('activate', () => {
   }
 });
 
+
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
 // CreateDb();
 //importDB();
 //console.log(getEventsById(10))
-readICS();
+//readICS();

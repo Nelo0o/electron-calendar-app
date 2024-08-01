@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { getAllEvents, getEventsById } from "./readDB";
+import { getAllEvents, getEventById } from "./readDB";
 import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
@@ -28,5 +28,5 @@ ipcMain.handle('modifie-event', async (evt, id: number) => {
 })
 
 ipcMain.handle('get-event-id', async (evt, id: number) => {
-    return getEventsById(id);
+    return getEventById(id);
 });

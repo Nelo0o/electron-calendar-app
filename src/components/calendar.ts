@@ -1,6 +1,7 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
 import { ipcRenderer, ipcMain } from 'electron';
+import { IEvent } from '../interfaces/IEvents';
 
 console.log("calendar api", window.electron);
 
@@ -17,33 +18,33 @@ function createEventIndicator(): HTMLElement {
     return eventIndicator;
 }
 
+
+
 function fillEvents(month: Date): void {
-    window.electron.getAllEvents().then((events: IEvent[]) => {
-        const eventsByDate: { [key: string]: IEvent[] } = {};
 
-        events.forEach((event: IEvent) => {
-            if (!eventsByDate[event.date]) {
-                eventsByDate[event.date] = [];
-            }
-            eventsByDate[event.date].push(event);
-        });
+    const lesEvents =  window.electron.getAllEvents().then((event) => {
 
-        Object.keys(eventsByDate).forEach(date => {
-            const dayElement: HTMLElement | null = document.getElementById(date);
-            if (dayElement) {
+        event.forEach(lEvent => {
+    
+            if (document.getElementById(lEvent.date)) {
+                console.log(lEvent.date);
+                
+                
+                const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();
-                dayElement.appendChild(eventIndicator);
-
-                dayElement.addEventListener('click', () => {
-                    const eventIds = eventsByDate[date].map(event => event.id);
-                    window.electron.openEventModal(eventIds);
-                });
+                lejour.appendChild(eventIndicator);
+                lejour.addEventListener('click', () => {
+                    window.electron.openEventModal(lEvent.id);
+                })
             }
-        });
+           
+        })
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);
-    });
+});
+
 }
+
 
 function renderCalendar(month: Date): void {
     const startMonth: Date = startOfMonth(month);
@@ -70,7 +71,7 @@ function renderCalendar(month: Date): void {
                 } else {
                     lejour = "0" + monthIndex;
                 }
-                dayElement.setAttribute("id", day.getDate() + "/" + lejour + "/" + day.getFullYear());
+                dayElement.setAttribute("id",day.getFullYear()  + "-" + lejour + "-" + day.getDate());
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {

@@ -11,7 +11,7 @@ export function CreateDb(): void {
     (id INTEGER PRIMARY KEY AUTOINCREMENT,
     titre TEXT NOT NULL,
     description TEXT NOT NULL,
-    date DATE,
+    date TEXT,
     time TIME)`;
 
     const createTable = db.prepare(rqCreate);

@@ -12,24 +12,21 @@ const currentMonthDisplay: HTMLElement | null = document.getElementById('current
 let currentMonth: Date = new Date();
 
 function fillEvents(month: Date): void {
-
-    const lesEvents =  window.electron.getAllEvents().then((event) => {
-
-        event.forEach(lEvent => {
-    
-            if (document.getElementById(lEvent.date)) {
-                console.log(lEvent.id, lEvent.date)
-                const lejour: HTMLElement = document.getElementById(lEvent.date);
+    window.electron.getAllEvents().then((events: IEvent[]) => {
+        events.forEach((lEvent: IEvent) => {
+            const lejour: HTMLElement | null = document.getElementById(lEvent.date);
+            if (lejour) {
+                console.log(lEvent.id, lEvent.date);
                 lejour.classList.add('event');
                 lejour.addEventListener('click', () => {
                     window.electron.openEventModal(lEvent.id);
-                })
+                });
             }
-           
-        })
-    })
+        });
+    }).catch(error => {
+        console.error("Erreur lors de la récupération des événements :", error);
+    });
 }
-
 
 function renderCalendar(month: Date): void {
     const startMonth: Date = startOfMonth(month);

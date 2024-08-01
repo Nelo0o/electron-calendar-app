@@ -11,14 +11,32 @@ const currentMonthDisplay: HTMLElement | null = document.getElementById('current
 
 let currentMonth: Date = new Date();
 
+function createEventIndicator(): HTMLElement {
+    const eventIndicator = document.createElement('span');
+    eventIndicator.className = 'event-indicator';
+    return eventIndicator;
+}
+
 function fillEvents(month: Date): void {
     window.electron.getAllEvents().then((events: IEvent[]) => {
-        events.forEach((lEvent: IEvent) => {
-            const lejour: HTMLElement | null = document.getElementById(lEvent.date);
-            if (lejour) {
-                lejour.classList.add('event');
-                lejour.addEventListener('click', () => {
-                    window.electron.openEventModal(lEvent.id);
+        const eventsByDate: { [key: string]: IEvent[] } = {};
+
+        events.forEach((event: IEvent) => {
+            if (!eventsByDate[event.date]) {
+                eventsByDate[event.date] = [];
+            }
+            eventsByDate[event.date].push(event);
+        });
+
+        Object.keys(eventsByDate).forEach(date => {
+            const dayElement: HTMLElement | null = document.getElementById(date);
+            if (dayElement) {
+                const eventIndicator = createEventIndicator();
+                dayElement.appendChild(eventIndicator);
+
+                dayElement.addEventListener('click', () => {
+                    const eventIds = eventsByDate[date].map(event => event.id);
+                    window.electron.openEventModal(eventIds);
                 });
             }
         });

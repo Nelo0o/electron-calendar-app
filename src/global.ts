@@ -10,5 +10,8 @@ declare global {
             modifieEvent: (id: number) => Promise<string>
             openEventModal: (id: number) => void
         }
+        "modale": {
+            getEventById: (id: number) => IEvent
+        }
     }
 }

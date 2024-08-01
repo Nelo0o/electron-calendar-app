@@ -1,10 +1,10 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { getAllEvents } from "./readDB";
-import { IEvent } from "src/interfaces/IEvents";
+import { getAllEvents, getEventsById } from "./readDB";
+import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 
-ipcMain.handle('get-all-events', getAllEvents) 
+ipcMain.handle('get-all-events', getAllEvents);
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
@@ -26,3 +26,7 @@ ipcMain.handle('modifie-event', async (evt, id: number) => {
     if (win) win.close()
     return "modif ok"
 })
+
+ipcMain.handle('get-event-id', async (evt, id: number) => {
+    return getEventsById(id);
+});

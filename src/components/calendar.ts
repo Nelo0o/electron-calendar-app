@@ -1,6 +1,5 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
-import { IEvent } from 'src/interfaces/IEvents';
 
 console.log("calendar api", window.electron);
 

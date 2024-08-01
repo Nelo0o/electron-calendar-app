@@ -27,4 +27,6 @@ ipcMain.handle('modifie-event', async (evt, id: number) => {
     return "modif ok"
 })
 
-ipcMain.handle('get-event-id', getEventsById(10));
+ipcMain.handle('get-event-id', async (evt, id: number) => {
+    return getEventsById(id);
+});

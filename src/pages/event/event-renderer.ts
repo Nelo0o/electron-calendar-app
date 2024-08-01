@@ -1,8 +1,12 @@
 console.log("event renderer");
 
-const levent = window.electron.getEventsById(100);
-
-console.log(levent)
+document.addEventListener('DOMContentLoaded', () => {
+    const eventId = 10;
+    window.modale.getEventById(eventId).then(event => {
+        console.log(event);
+        
+    });
+});
 
 const titre = document.getElementById('eventTitle');
-titre.setAttribute('value', 'HELLLO') ;
+titre.setAttribute('value', 'HELLLO');

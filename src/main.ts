@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron';
+import { app, BrowserWindow, ipcMain, ipcRenderer, Menu, shell } from 'electron';
 import path from 'path';
 import {importDB, CheckDB} from "./services/database";
 import './services/ipcService'
@@ -34,6 +34,52 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  const menuTemplate: Electron.MenuItemConstructorOptions[] = [
+    {
+        label: 'Event',
+        submenu: [
+            {
+                label: 'Ajouter un event',
+                click: () => {
+                  console.log('Ajouter un event');
+                },
+            },
+        ],
+    },
+    {
+        label: 'Import/Export',
+        submenu: [
+            {
+                label: 'Import ics',
+                click: () => {
+                    console.log('Import ICS');
+                },
+            },
+            {
+                label: 'Export ics',
+                click: () => {
+                    console.log('Export ICS');
+                },
+            },
+        ],
+    },
+    {
+      label: 'A propos',
+      submenu: [
+          {
+              label: 'Repo Github',
+              click: () => {
+                shell.openExternal('https://github.com/Nelo0o/electron-calendar-app');
+              },
+          },
+      ],
+  },
+];
+
+const menu = Menu.buildFromTemplate(menuTemplate);
+Menu.setApplicationMenu(menu);
+
 };
 
 ipcMain.on('open-event-modal', (event, arg) => {

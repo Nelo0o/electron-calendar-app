@@ -12,7 +12,7 @@ ipcMain.handle('get-month-events', async (evt, month: number) => {
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await AjouteLigneCustom('evenements',"titre, description, date, time",""+params.title+", "+params.description+", "+params.start+", "+params.end+"")
+    await AjouteLigneCustom('evenements',"titre, description, date, time",""+params.titre+", "+params.description+", "+params.date+", "+params.time+"")
     if (win) win.close()
     return "ajout ok"
 })

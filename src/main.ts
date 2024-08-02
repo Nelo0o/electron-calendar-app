@@ -73,8 +73,20 @@ const createWindow = () => {
                 shell.openExternal('https://github.com/Nelo0o/electron-calendar-app');
               },
           },
+          {
+            label: 'Patreon',
+            click: () => {
+              shell.openExternal('https://www.patreon.com/fr-FR');
+            },
+        },
       ],
   },
+  {
+    label: 'Aide',
+    click: () => {
+      shell.openExternal('https://perdu.com');
+    },
+},
 ];
 
 const menu = Menu.buildFromTemplate(menuTemplate);

@@ -24,9 +24,9 @@ ipcMain.handle('supprime-event', async (evt, id: number) => {
     return "supprime ok"
 })
 
-ipcMain.handle('modifie-event', async (evt, id: number) => {
+ipcMain.handle('modif-event', async (evt, id: string, values: string) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await ModifieLigne(id)
+    await ModifieLigne(id, values)
     if (win) win.close()
     return "modif ok"
 })

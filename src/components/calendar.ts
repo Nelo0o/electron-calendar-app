@@ -22,11 +22,12 @@ function createEventIndicator(): HTMLElement {
 
 function fillEvents(month: Date): void {
 
-    const lesEvents =  window.electron.getAllEvents().then((event) => {
+    const lesEvents =  window.electron.getEventsByMonth(month.getMonth()).then((event) => {
 
         event.forEach(lEvent => {
     
             if (document.getElementById(lEvent.date)) {               
+                console.log(lEvent.id);
                 
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();

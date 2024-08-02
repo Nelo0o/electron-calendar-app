@@ -33,14 +33,16 @@ export function getEventsByMonth(leMois: number) {
     if (leMois == 1) {
         lemoisAv = 12;
     } else {
-        lemoisAv = leMois--;
+        lemoisAv = leMois;
     }
 
     if (leMois == 12) {
         lemoisAp = 1;
     } else {
-        lemoisAp = leMois++;
+        lemoisAp = leMois +2;
     }
+
+    leMois++;
 
     let lemoisApOK = lemoisAp.toString();
     let lemoisAvOK = lemoisAv.toString();
@@ -63,6 +65,7 @@ export function getEventsByMonth(leMois: number) {
     const lireLigne = db.prepare(rqLire);
 
     const lesLignes =  lireLigne.all();
+    
 
     return lesLignes;
 }

@@ -14,6 +14,10 @@ export function AjouteLigneCustom(laTable = 'evenements', lesChamps = "titre, de
 
 export function SupprimeLigne(id: number): void  {
 
+    if (typeof id != "number") {
+       id = parseInt(id)
+    }
+
     const db = new Database('agenda.db');
 
     const rqSuppr = "DELETE FROM evenements WHERE id="+id+"";
@@ -23,7 +27,7 @@ export function SupprimeLigne(id: number): void  {
     const logAdd =  delRow.run();
 }
 
-export function ModifieLigne(id: number, values = "description = 'despcition', titre = 'titre'"): void  {
+export function ModifieLigne(id: string, values = "description = 'despcition', titre = 'titre'"): void  {
 
     const db = new Database('agenda.db');
 

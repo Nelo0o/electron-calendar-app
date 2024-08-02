@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, ipcRenderer, Menu, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron';
 import path from 'path';
 import {importDB, CheckDB} from "./services/database";
 import './services/ipcService'
@@ -37,12 +37,12 @@ const createWindow = () => {
 
   const menuTemplate: Electron.MenuItemConstructorOptions[] = [
     {
-        label: 'Event',
+        label: 'Evénements',
         submenu: [
             {
                 label: 'Ajouter un event',
                 click: () => {
-                  console.log('Ajouter un event');
+                  OpenModale(0)
                 },
             },
         ],
@@ -51,13 +51,13 @@ const createWindow = () => {
         label: 'Import/Export',
         submenu: [
             {
-                label: 'Import ics',
+                label: 'Importer un fichier ICS',
                 click: () => {
                     console.log('Import ICS');
                 },
             },
             {
-                label: 'Export ics',
+                label: 'Exporter en fichier ICS',
                 click: () => {
                     console.log('Export ICS');
                 },
@@ -83,6 +83,10 @@ Menu.setApplicationMenu(menu);
 };
 
 ipcMain.on('open-event-modal', (event, arg) => {
+  OpenModale(arg)
+});
+
+function OpenModale (arg) {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
@@ -104,8 +108,8 @@ ipcMain.on('open-event-modal', (event, arg) => {
   if (parseInt(arg) != 0) {
     eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
   }
-  
-});
+}
+
 
 ipcMain.on('open-ics-modal', (event, arg) => {
   const eventModal = new BrowserWindow({

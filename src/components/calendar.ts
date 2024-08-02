@@ -70,7 +70,7 @@ function displayEventsForDay(date: Date): void {
         setTimeout(() => {
             eventListContainer.classList.remove('transition');
             eventListContainer.classList.add('is-visible');
-            eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;
+            eventListTitle.textContent = `Evénements du ${format(new Date(date), 'dd/MM/yyyy')}`;
         }, 200);
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);

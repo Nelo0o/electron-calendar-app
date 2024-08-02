@@ -26,9 +26,7 @@ function fillEvents(month: Date): void {
 
         event.forEach(lEvent => {
     
-            if (document.getElementById(lEvent.date)) {
-                console.log(lEvent.date);
-                
+            if (document.getElementById(lEvent.date)) {               
                 
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();

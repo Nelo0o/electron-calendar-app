@@ -20,8 +20,8 @@
     const modifier = document.getElementById('update');
     const supprimer = document.getElementById('delete');
 
-    supprimer.addEventListener('click', () => {
-        window.electron.supprimeEvent(id.value)
+    supprimer.addEventListener('click', async () => {
+        await window.electron.supprimeEvent(id.value);
     })
 
     modifier.addEventListener('click', () => {
@@ -29,8 +29,4 @@
         window.electron.modifieEvent(id.value, values)
     })
     
-
 })()
-
-
-

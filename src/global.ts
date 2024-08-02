@@ -13,6 +13,7 @@ declare global {
             openICSModal: (id: number) => void
             getEventById: (id: number) => Promise<IEvent[]>
             getEventId: () => Promise<any>
+            onRefreshData: (callback: () => void) => void
         }
     }
 }

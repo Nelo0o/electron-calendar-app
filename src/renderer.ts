@@ -25,5 +25,8 @@
  *  });
  * ```
  */
+import './components/calendar';
 
-import './components/calendar.ts'; 
+window.electron.onRefreshData(() => {
+    console.log('Rafraîchir les données');
+  });

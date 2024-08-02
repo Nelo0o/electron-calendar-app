@@ -11,17 +11,27 @@
     <h2>Ajouter ou modifier un événement</h2>
     <form>
         <input type="hidden" id="eventId" name="eventId">
-        <label for="eventTitle">Titre</label>
-        <input type="text" id="eventTitle" name="eventTitle">
-        <label for="eventDate">Date</label>
-        <input type="date" id="eventDate" name="eventDate">
-        <label for="eventTime">Heure</label>
-        <input type="time" id="eventTime" name="eventTime">
-        <label for="eventDescription">Description</label>
-        <textarea id="eventDescription" name="eventDescription"></textarea>
-        <button type="submit">Valider</button>
+        <div class="form-input">
+            <label for="eventTitle">Titre</label>
+            <input type="text" id="eventTitle" name="eventTitle">
+        </div>
+        <div class="form-input">
+            <label for="eventDate">Date</label>
+            <input type="date" id="eventDate" name="eventDate">
+        </div>
+        <div class="form-input">
+            <label for="eventTime">Heure</label>
+            <input type="time" id="eventTime" name="eventTime">
+        </div>
+        <div class="form-input">
+            <label for="eventDescription">Description</label>
+            <textarea id="eventDescription" name="eventDescription"></textarea>
+        </div>
+        <div class="submit-container">
+            <button class="form-btn" type="submit">Valider</button>
+            <button class="form-btn" id="delete">Supprimer</button>
+        </div>
     </form>
-    <button id="delete">Supprimer</button>
 
     <script type="module" src="event-renderer.ts"></script>
 </body>

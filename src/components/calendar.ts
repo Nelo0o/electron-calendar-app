@@ -44,6 +44,8 @@ function displayEventsForDay(date: Date): void {
     const eventListContainer: HTMLElement | null = document.querySelector('.event-list-container');
     const eventList: HTMLElement | null = document.getElementById('event-list');
     const eventListTitle: HTMLElement | null = document.getElementById('event-list-title');
+    const addEventButton: HTMLElement | null = document.getElementById('add-event-button');
+
     if (!eventList) {
         return;
     }
@@ -74,6 +76,10 @@ function displayEventsForDay(date: Date): void {
         }, 200);
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);
+    });
+
+    addEventButton.addEventListener('click', () => {
+        window.electron.openEventModal(null);
     });
 }
 
@@ -168,3 +174,5 @@ if (calendarContent) {
 }
 
 renderCalendar(currentMonth);
+
+export { renderCalendar, fillEvents, displayEventsForDay };

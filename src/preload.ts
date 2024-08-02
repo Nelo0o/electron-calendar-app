@@ -6,7 +6,7 @@ import { IEvent } from "./interfaces/IEvents";
 
 contextBridge.exposeInMainWorld('electron', {
     getEventsByMonth: (month: number) => ipcRenderer.invoke('get-month-events', month),
-    getEventsByDay: (day: number) => ipcRenderer.invoke('get-day-events', day),
+    getEventsByDay: (day: Date) => ipcRenderer.invoke('get-day-events', day),
     getEventById: (id: number) => ipcRenderer.invoke('get-event-id', id),
     ajoutEvent: (params: IEvent) => ipcRenderer.invoke('ajout-event', params),
     supprimeEvent: (id: string) => ipcRenderer.invoke('supprime-event', id),
@@ -19,7 +19,6 @@ contextBridge.exposeInMainWorld('electron', {
                 resolve(id)
             })
         })
-        
-    }
-    
+    },
+    onRefreshData: (callback: () => void) => ipcRenderer.on('refresh-data', callback),
 })

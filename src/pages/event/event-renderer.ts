@@ -18,7 +18,7 @@
         });
 
     const modifier = document.getElementById('valider');
-    const supprimer = document.getElementById('delete');
+    const supprimer = document.getElementById('supprimer');
 
     supprimer.addEventListener('click', async () => {
         await window.electron.supprimeEvent(id.value);

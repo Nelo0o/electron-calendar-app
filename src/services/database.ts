@@ -27,8 +27,6 @@ export function CheckDB() {
 
     const logCheck =  checkTable.all();
 
-    console.log(logCheck[0].count);
-
     return logCheck[0].count
 }
 

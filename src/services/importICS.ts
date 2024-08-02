@@ -3,7 +3,7 @@ import { ICSEvent } from '../interfaces/ICSEvent';
 import { IEvent } from '../interfaces/IEvents';
 import path from 'path';
 
-export function readICS(chemin: Array<string>) : Array<IEvent> | void {
+export function readICS(chemin: Array<string>) : Array<IEvent> {
 
     //const filePath = path.join(__dirname, `../../assets/data.ics`);
     const filePath = path.join(__dirname, chemin[0]);

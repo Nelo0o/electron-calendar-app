@@ -6,6 +6,7 @@ import './services/ipcService'
 import { WriteICS } from './services/exportICS';
 import { readICS } from './services/importICS';
 import { dialog } from 'electron';
+import { IEvent } from './interfaces/IEvents';
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -63,7 +64,8 @@ const createWindow = () => {
                       filters: [{ name: "fichier ICS", extensions: ["ics"] }],
                       properties: ["openFile"]
                     }).then(res => {
-                        readICS(res.filePaths);
+                        const lesEvents = readICS(res.filePaths);
+                        openModaleImport(lesEvents);
                     })
                 },
             },
@@ -138,6 +140,28 @@ function OpenModale (arg) {
   if (parseInt(arg) != 0) {
     eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
   }
+}
+
+function openModaleImport (lesEvents: Array<IEvent> ) {
+  const eventModalImport = new BrowserWindow({
+    width: 900,
+    height: 600,
+    icon: 'assets/icon-logo.ico',
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+    
+  });
+
+  eventModalImport.webContents.openDevTools();
+
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    eventModalImport.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/importICS/ics.html`);
+  } else {
+    eventModalImport.loadFile(path.join(__dirname, `../../src/pages/importICS/ics.html`));
+  }
+
+    eventModalImport.webContents.once('dom-ready', () => eventModalImport.webContents.send('send-event', lesEvents))
 }
 
 

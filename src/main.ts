@@ -116,10 +116,6 @@ const createWindow = () => {
   });
 };
 
-ipcMain.on('open-event-modal', (event, arg) => {
-  OpenModale(arg)
-});
-
 function OpenModale (arg) {
   const eventModal = new BrowserWindow({
     width: 900,

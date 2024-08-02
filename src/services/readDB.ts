@@ -22,9 +22,9 @@ export function getAllEvents(): Array<IEvent> {
     const lireLigne = db.prepare(rqLire);
 
     try {
-        return (lireLigne.all());
+        return (lireLigne.all() as IEvent[]); // Assertion de type
     }catch(e) {
-        return("ERROR")
+        return([] as IEvent[]);
     }
 }
 
@@ -68,7 +68,7 @@ export function getEventsByMonth(leMois: number) {
     const lireLigne = db.prepare(rqLire);
 
     try {
-        return (lireLigne.all());
+        return (lireLigne.all() as IEvent[]); // Assertion de type
     }catch(e) {
         return("ERROR")
     }

@@ -22,30 +22,58 @@ function createEventIndicator(): HTMLElement {
 
 function fillEvents(month: Date): void {
 
-    const lesEvents =  window.electron.getAllEvents().then((event) => {
+    const lesEvents = window.electron.getAllEvents().then((event) => {
 
         event.forEach(lEvent => {
-    
-            if (document.getElementById(lEvent.date)) {               
-                
+
+            if (document.getElementById(lEvent.date)) {
+
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();
-                
+
                 eventIndicator.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    window.electron.openEventModal(lEvent.id);
+                    // window.electron.openEventModal(lEvent.id);
                 })
 
                 lejour.appendChild(eventIndicator);
             }
-           
+
         })
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);
-});
-
+    });
 }
 
+function displayEventsForDay(date: string): void {
+    const eventList: HTMLElement | null = document.getElementById('event-list');
+    const eventListTitle: HTMLElement | null = document.getElementById('event-list-title');
+    if (!eventList) return;
+
+    eventList.innerHTML = '';
+
+    window.electron.getAllEvents().then(events => {
+        const eventsForDay = events.filter(event => event.date === date);
+        eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;
+        if (eventsForDay.length === 0) {
+            const noEventItem = document.createElement('li');
+            noEventItem.textContent = "Aucun événement de prévu";
+            noEventItem.classList.add('no-event');
+            eventList.appendChild(noEventItem);
+        } else {
+            eventsForDay.forEach(event => {
+                const eventItem = document.createElement('li');
+                eventItem.textContent = `${event.time.slice(0, 5)} - ${event.titre}`;
+                eventList.appendChild(eventItem);
+                eventItem.addEventListener('click', () => {
+                    window.electron.openEventModal(event.id);
+                })
+            });
+        }
+    }).catch(error => {
+        console.error("Erreur lors de la récupération des événements :", error);
+    });
+}
 
 function renderCalendar(month: Date): void {
     const startMonth: Date = startOfMonth(month);
@@ -54,7 +82,6 @@ function renderCalendar(month: Date): void {
     const endDate: Date = endOfWeek(endMonth);
 
     const days: Date[] = eachDayOfInterval({ start: startDate, end: endDate });
-
 
     if (calendarContent) {
         calendarContent.classList.add('transition');
@@ -72,17 +99,19 @@ function renderCalendar(month: Date): void {
                 } else {
                     lejour = "0" + monthIndex;
                 }
-                dayElement.setAttribute("id",day.getFullYear()  + "-" + lejour + "-" + day.getDate());
+                dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + day.getDate());
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal(0);
+                    const dateStr = day.getFullYear() + "-" + lejour + "-" + (day.getDate() < 10 ? "0" + day.getDate() : day.getDate());
+                    displayEventsForDay(dateStr);
                 });
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
                     if (isSameDay(day, new Date())) {
                         dayElement.classList.add('currentDay');
+                        displayEventsForDay(day.getFullYear() + "-" + lejour + "-" + (day.getDate() < 10 ? "0" + day.getDate() : day.getDate()));
                     }
                 } else {
                     dayElement.classList.add('otherMonthDay');

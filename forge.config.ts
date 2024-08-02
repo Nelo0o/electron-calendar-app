@@ -28,10 +28,6 @@ const config: ForgeConfig = {
         {
           entry: 'src/preload.ts',
           config: 'vite.preload.config.ts',
-        },
-        {
-          entry: 'src/pages/event/event-preload.ts',
-          config: 'vite.preload.config.ts',
         }
       ],
       renderer: [

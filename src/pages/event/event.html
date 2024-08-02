@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Détails</title>
+    <title>Ajouter ou modifier un événement</title>
     <link rel="stylesheet" href="../../styles/index.css">
 </head>
 
 <body>
-    <h2>Détails</h2>
+    <h2>Ajouter ou modifier un événement</h2>
     <form>
         <input type="hidden" id="eventId" name="eventId">
         <label for="eventTitle">Titre</label>
@@ -19,9 +19,8 @@
         <input type="time" id="eventTime" name="eventTime">
         <label for="eventDescription">Description</label>
         <textarea id="eventDescription" name="eventDescription"></textarea>
-        <button type="submit">Ajouter</button>
+        <button type="submit">Valider</button>
     </form>
-    <button id="update">Modifier</button>
     <button id="delete">Supprimer</button>
 
     <script type="module" src="event-renderer.ts"></script>

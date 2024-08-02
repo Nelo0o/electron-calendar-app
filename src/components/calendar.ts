@@ -78,9 +78,12 @@ function displayEventsForDay(date: Date): void {
         console.error("Erreur lors de la récupération des événements :", error);
     });
 
-    addEventButton.addEventListener('click', () => {
-        window.electron.openEventModal(0);
-    });
+    if (addEventButton && !addEventButton.hasAttribute('data-listener')) {
+        addEventButton.addEventListener('click', () => {
+            window.electron.openEventModal(0);
+        });
+        addEventButton.setAttribute('data-listener', 'true');
+    }
 }
 
 function renderCalendar(date: Date): void {    

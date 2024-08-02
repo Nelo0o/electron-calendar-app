@@ -79,7 +79,7 @@ function displayEventsForDay(date: Date): void {
     });
 
     addEventButton.addEventListener('click', () => {
-        window.electron.openEventModal(null);
+        window.electron.openEventModal(0);
     });
 }
 
@@ -110,9 +110,7 @@ function renderCalendar(date: Date): void {
                 dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + day.getDate());
                 dayElement.textContent = format(day, 'd');
 
-                dayElement.addEventListener('click', () => {
-                    displayEventsForDay(day);
-                });
+
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
@@ -123,6 +121,9 @@ function renderCalendar(date: Date): void {
                 } else {
                     dayElement.classList.add('otherMonthDay');
                     calendarContent.appendChild(dayElement);
+                    dayElement.addEventListener('click', () => {
+                        displayEventsForDay(day);
+                    });
                 }
             });
             calendarContent.classList.remove('transition');

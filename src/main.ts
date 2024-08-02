@@ -110,11 +110,11 @@ const createWindow = () => {
 
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
-
-  ipcMain.on('open-event-modal', (event, arg) => {
-    OpenModale(arg);
-  });
 };
+
+ipcMain.on('open-event-modal', (event, arg) => {
+  OpenModale(arg);
+});
 
 function OpenModale (arg) {
   const eventModal = new BrowserWindow({

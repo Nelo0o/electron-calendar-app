@@ -11,8 +11,8 @@
     
             titre.setAttribute('value', event[0].titre);
             description.innerHTML= event[0].description;
-            date.setAttribute('value', event[0].date);
-            time.setAttribute('value', event[0].time);
+            date.setAttribute('value', event[0].date_deb.slice(0, 10));
+            time.setAttribute('value', event[0].date_deb.slice(11, 16));
             id.setAttribute('value', (event[0].id).toString())
             
         });

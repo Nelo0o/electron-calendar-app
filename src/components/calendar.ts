@@ -27,9 +27,9 @@ function fillEvents(month: Date): void {
 
         event.forEach(lEvent => {
 
-            if (document.getElementById(lEvent.date)) {
+            if (document.getElementById(lEvent.date_deb.slice(0, 10))) {
 
-                const lejour: HTMLElement = document.getElementById(lEvent.date);
+                const lejour: HTMLElement = document.getElementById(lEvent.date_deb.slice(0, 10));
                 const eventIndicator = createEventIndicator();
 
                 lejour.appendChild(eventIndicator);
@@ -62,8 +62,9 @@ function displayEventsForDay(date: Date): void {
             eventList.appendChild(noEventItem);
         } else {
             events.forEach(event => {
+                
                 const eventItem = document.createElement('li');
-                eventItem.textContent = `${event.time.slice(0, 5)} - ${event.titre}`;
+                eventItem.textContent = `${event.date_deb.slice(11, 16)} - ${event.titre}`;
                 eventList.appendChild(eventItem);
                 eventItem.addEventListener('click', () => {
                     window.electron.openEventModal(event.id);
@@ -111,7 +112,11 @@ function renderCalendar(date: Date): void {
                 } else {
                     lejour = "0" + monthIndex;
                 }
-                dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + day.getDate());
+                let zero ="";
+                if (day.getDate() < 10) {
+                    zero ="0";
+                }
+                dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + zero + day.getDate());
                 dayElement.textContent = format(day, 'd');
                 
                 let estPasse = false

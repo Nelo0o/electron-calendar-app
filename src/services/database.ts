@@ -7,12 +7,17 @@ const db = new Database('agenda.db');
 /* Créer la table si elle n'existe pas */
 export function CreateDb(): void {
 
-    const rqCreate = `CREATE TABLE IF NOT EXISTS evenements 
+    const rqCreate = `CREATE TABLE IF NOT EXISTS event 
     (id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titre TEXT NOT NULL,
+    date_deb DATETIME,
+    date_fin DATETIME,
+    titre VARCHAR(255) DEFAULT NULL,
+    location VARCHAR(255) DEFAULT NULL,
+    categorie VARCHAR(100) DEFAULT NULL,
+    statut VARCHAR(10) DEFAULT NULL,
     description TEXT NOT NULL,
-    date TEXT,
-    time TIME)`;
+    transparence VARCHAR(15) DEFAULT NULL,
+    nbMaj INT DEFAULT NULL)`;
 
     const createTable = db.prepare(rqCreate);
 
@@ -21,7 +26,7 @@ export function CreateDb(): void {
 
 export function CheckDB() {
 
-    const rqCreate = `SELECT count(*) as count FROM sqlite_master WHERE type='table' AND name='evenements'`;
+    const rqCreate = `SELECT count(*) as count FROM sqlite_master WHERE type='table' AND name='event'`;
 
     const checkTable = db.prepare(rqCreate);
 

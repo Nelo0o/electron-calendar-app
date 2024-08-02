@@ -35,9 +35,4 @@ export function readICS(chemin: Array<string>) : Array<IEvent> {
     if (lesValues.length > 0) {
         return(lesValues)
     }
-    
-
-    /*if (lesValues != "") {
-        AjouteLigneCustom("evenements", "titre, description, date, time", lesValues)
-    }*/
 }

@@ -1,9 +1,9 @@
 import Database from 'better-sqlite3';
-import { IEvent } from 'src/interfaces/IEvents';
+import { IEvent } from '../interfaces/IEvents';
 
 const db = new Database('agenda.db');
 
-export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object  {
+export function LireDBCustom(lesCollones = "*", laTable = 'event'): object  {
 
     const rqLire = 'SELECT '+lesCollones+' FROM '+laTable;
 
@@ -17,7 +17,7 @@ export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object 
 
 export function getAllEvents(): Array<IEvent> {
 
-    const rqLire = 'SELECT * FROM evenements';
+    const rqLire = 'SELECT * FROM event';
 
     const lireLigne = db.prepare(rqLire);
 
@@ -63,7 +63,7 @@ export function getEventsByMonth(leMois: number) {
 
 
 
-    const rqLire = "SELECT * FROM evenements WHERE strftime('%m', date) IN ('"+lemoisAvOK+"', '"+lemoisOK+"', '"+lemoisApOK+"')";
+    const rqLire = "SELECT * FROM event WHERE strftime('%m', date_deb) IN ('"+lemoisAvOK+"', '"+lemoisOK+"', '"+lemoisApOK+"')";
 
     const lireLigne = db.prepare(rqLire);
 
@@ -76,7 +76,7 @@ export function getEventsByMonth(leMois: number) {
 
 export function getEventById(id : number) {
 
-    const rqLire = "SELECT * FROM evenements WHERE id ="+id+"";
+    const rqLire = "SELECT * FROM event WHERE id ="+id+"";
     const lireLigne = db.prepare(rqLire);
 
     const lesLignes =  lireLigne.all();
@@ -89,7 +89,8 @@ export function getEventByDay(date: Date) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    const rqLire = `SELECT * FROM evenements WHERE strftime('%d', date) = '${day < 10 ? '0' + day : day}' AND strftime('%m', date) = '${month < 10 ? '0' + month : month}' AND strftime('%Y', date) = '${year}'`;
+    const rqLire = `SELECT * FROM event WHERE strftime('%d', date_deb) = '${day < 10 ? '0' + day : day}' AND strftime('%m', date_deb) = '${month < 10 ? '0' + month : month}' AND strftime('%Y', date_deb) = '${year}'`;
+    
     const lireLigne = db.prepare(rqLire);
 
     try {

@@ -109,22 +109,27 @@ function renderCalendar(date: Date): void {
                 }
                 dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + day.getDate());
                 dayElement.textContent = format(day, 'd');
-
-
+                
+                let estPasse = false
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
                     if (isSameDay(day, new Date())) {
                         dayElement.classList.add('currentDay');
                         displayEventsForDay(date);
+                        estPasse = true;
                     }
                 } else {
                     dayElement.classList.add('otherMonthDay');
                     calendarContent.appendChild(dayElement);
+                }
+
+                if (!estPasse) {
                     dayElement.addEventListener('click', () => {
                         displayEventsForDay(day);
+
                     });
-                }
+            }
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');

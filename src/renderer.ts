@@ -26,7 +26,10 @@
  * ```
  */
 import './components/calendar';
+import { renderCalendar, fillEvents } from './components/calendar';
 
 window.electron.onRefreshData(() => {
-    console.log('Rafraîchir les données');
-  });
+    const currentMonth = new Date();
+    renderCalendar(currentMonth);
+    fillEvents(currentMonth);
+});

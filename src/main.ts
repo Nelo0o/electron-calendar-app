@@ -1,7 +1,11 @@
 import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron';
 import path from 'path';
 import {importDB, CheckDB} from "./services/database";
+import { getAllEvents } from './services/readDB';
 import './services/ipcService'
+import { WriteICS } from './services/exportICS';
+import { readICS } from './services/importICS';
+import { dialog } from 'electron';
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -52,14 +56,28 @@ const createWindow = () => {
         submenu: [
             {
                 label: 'Importer un fichier ICS',
-                click: () => {
+                click: (e) => {
                     console.log('Import ICS');
+                    dialog.showOpenDialog(e.sender, {
+                      title: "Selectionnez votre import ICS",
+                      filters: [{ name: "fichier ICS", extensions: ["ics"] }],
+                      properties: ["openFile"]
+                    }).then(res => {
+                        readICS(res.filePaths);
+                    })
                 },
             },
             {
                 label: 'Exporter en fichier ICS',
-                click: () => {
-                    console.log('Export ICS');
+                click: (e) => {
+                    dialog.showSaveDialog(e.sender, {
+                      title: "Sauvegarder l'export ICS",
+                      filters: [{ name: "fichier ICS", extensions: ["ics"] }],
+                    }).then(res => {
+                      const lesEvents = getAllEvents();
+                      WriteICS(lesEvents, res.filePath)
+                      console.log(res.filePath);
+                    })
                 },
             },
         ],

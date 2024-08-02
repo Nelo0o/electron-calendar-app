@@ -8,7 +8,7 @@ contextBridge.exposeInMainWorld('electron', {
     getEventsByMonth: (month: number) => ipcRenderer.invoke('get-month-events', month),
     getEventsByDay: (day: Date) => ipcRenderer.invoke('get-day-events', day),
     getEventById: (id: number) => ipcRenderer.invoke('get-event-id', id),
-    ajoutEvent: (params: IEvent) => ipcRenderer.invoke('ajout-event', params),
+    ajoutEvent: (table: string, zones: string, contenu: string) => ipcRenderer.invoke('ajout-event', table, zones, contenu),
     supprimeEvent: (id: string) => ipcRenderer.invoke('supprime-event', id),
     modifieEvent: (id: string, values: string) => ipcRenderer.invoke('modif-event', id, values),
     openEventModal: (id: number) => ipcRenderer.send('open-event-modal', id),

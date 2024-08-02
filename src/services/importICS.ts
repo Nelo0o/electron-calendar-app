@@ -5,13 +5,10 @@ import path from 'path';
 
 export function readICS(chemin: Array<string>) : Array<IEvent> {
 
-    //const filePath = path.join(__dirname, `../../assets/data.ics`);
-    const filePath = path.join(__dirname, chemin[0]);
 
+    const events: Array<ICSEvent> = calendar.sync.parseFile(chemin[0]);
 
-    const events: Array<ICSEvent> = calendar.sync.parseFile(filePath);
-
-
+    console.log(events);
     const lesValues: Array<IEvent> = [];
 
     for (const event of Object.values(events)) {
@@ -32,6 +29,9 @@ export function readICS(chemin: Array<string>) : Array<IEvent> {
             lesValues.push(objetICS);
         }
     }
+
+
+    
     if (lesValues.length > 0) {
         return(lesValues)
     }

@@ -1,0 +1,751 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+SUMMARY: Réunion de planification
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour planifier les tâches de la semaine.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Présentation de projet
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Présentation du projet de développement logiciel.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Formation
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Session de formation sur les nouvelles technologies.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Révision budgétaire
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Révision des budgets pour le prochain trimestre.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Entretien dAZembauche
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Entretien avec le candidat pour le poste de développeur.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Déjeuner dAZaffaires
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Déjeuner avec les partenaires pour discuter de la collaboration.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Atelier de créativité
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Atelier pour générer des idées innovantes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Conférence
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Conférence sur les tendances du marché.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue de code
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue de code pour le projet en cours.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Mise à jour de produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Mise à jour sur les dernières fonctionnalités du produit.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion dAZéquipe
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion hebdomadaire de lAZéquipe de développement.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séminaire
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séminaire sur les meilleures pratiques de gestion de projet.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Présentation client
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Présentation des résultats du projet au client.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de suivi
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour suivre lAZavancement des tâches.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Test utilisateur
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Session de test utilisateur pour la nouvelle interface.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion stratégique
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour définir la stratégie de lAZentreprise.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Brainstorming
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Session de brainstorming pour le prochain projet.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Mise en production
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Mise en production de la nouvelle version du logiciel.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Rapport mensuel
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Préparation du rapport mensuel des activités.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: fsfsfsdfsdfsdfEntretien annueqsddl
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Entretien annuel de performance des employés.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion inter-départements
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion entre différents départements pour améliorer la collaboration.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue des objectifs
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue des objectifs annuels et trimestriels.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Mise à jour sécurité
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Mise à jour sur les nouvelles politiques de sécurité.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Présentation marketing
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Présentation des nouvelles stratégies marketing.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion partenaires
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion avec les partenaires commerciaux.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Audit interne
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Audit interne des processus de lAZentreprise.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse des données
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse des données pour le dernier trimestre.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de crise
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion de crise pour gérer une situation urgente.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Présentation investisseurs
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Présentation des résultats financiers aux investisseurs.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance photo
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séance photo pour les nouveaux produits.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de projet
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour discuter des nouvelles fonctionnalités du projet.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Développement logiciel
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Discussion sur le développement du nouveau logiciel.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de revue
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour la revue des performances de lAZéquipe.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Planification des ressources
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Planification des ressources pour le prochain semestre.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de lancement
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour le lancement du nouveau produit.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse concurrentielle
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse des tendances concurrentielles.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Évaluation de projet
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Évaluation des projets en cours.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue des politiques
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue et mise à jour des politiques internes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de stratégie
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour élaborer la stratégie à long terme.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Formation technique
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Formation technique sur les nouveaux outils.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Débriefing de produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Débriefing sur les retours produits.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Évaluation des risques
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Évaluation des risques pour le prochain projet.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance de coaching
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séance de coaching pour les managers.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue de performance
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue de performance de lAZéquipe.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Planification stratégique
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Planification stratégique pour lAZannée prochaine.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de suivi produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Suivi des performances des produits lancés.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Révision des processus
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Révision des processus internes pour lAZefficacité.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Lancement de campagne
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Lancement de la nouvelle campagne marketing.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse des ventes
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse des ventes du dernier trimestre.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de performance
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour discuter des performances des projets.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance de feedback
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séance de feedback avec les équipes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Plan de développement
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Plan de développement pour lAZannée suivante.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de coordination
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Coordination entre les différents départements.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Évaluation annuelle
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Évaluation annuelle des objectifs et résultats.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Formation en leadership
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Formation en leadership pour les cadres.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse stratégique
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse stratégique pour la croissance future.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue trimestrielle
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue des résultats trimestriels.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion avec les investisseurs
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion avec les investisseurs pour discuter des plans futurs.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Développement produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Développement des fonctionnalités du nouveau produit.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Audit financier
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Audit financier pour lAZannée fiscale.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Planification budgétaire
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Planification budgétaire pour le prochain exercice.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance de brainstorming
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séance de brainstorming pour les projets futurs.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de lancement produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour le lancement du produit.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Formation produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Formation sur les caractéristiques du nouveau produit.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse de marché
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse de marché pour les nouvelles opportunités.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de stratégie digitale
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Stratégie pour le marketing digital.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance de coaching individuel
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Coaching individuel pour le développement personnel.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue de fin dAZannée
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue des activités et des résultats de fin dAZannée.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Planification de projet
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Planification des étapes du nouveau projet.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Évaluation des équipes
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Évaluation des performances des équipes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion dAZinnovation
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour discuter des idées innovantes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Développement stratégique
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Développement des stratégies pour les nouvelles opportunités.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance de feedback produit
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Retour sur le produit récemment lancé.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de clôture
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour clore les projets en cours.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Plan de communication
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Plan de communication pour les nouveaux produits.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Analyse des performances
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Analyse des performances des campagnes marketing.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de développement
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Réunion pour le développement de nouveaux produits.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Formation interne
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Formation sur les nouvelles procédures internes.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Revue de mi-année
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Revue des résultats de mi-année.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Planification stratégique annuelle
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Planification stratégique pour lAZannée suivante.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Séance dAZinnovation
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Séance pour discuter des prochaines innovations.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Réunion de clôture de projet
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Clôture du projet et bilan.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY: Audit de performance
+DTSTART;TZID=America/New_York:20130802T103400
+DTEND;TZID=America/New_York:20130802T110400
+LOCATION:1000 Broadway Ave Brooklyn
+DESCRIPTION: Audit de la performance globale de lAZentreprise.
+STATUS:CONFIRMED
+UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
+END:VEVENT
+END:VCALENDAR

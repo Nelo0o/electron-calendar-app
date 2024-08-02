@@ -17,7 +17,6 @@ DTEND;TZID=America/New_York:20130802T110400
 LOCATION:1000 Broadway Ave Brooklyn
 DESCRIPTION: `+event.description+`
 STATUS:CONFIRMED
-UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
 END:VEVENT\n`
     }
 
@@ -28,7 +27,6 @@ END:VEVENT\n`
       } catch (err) {
         console.error(err);
       }
-    console.log(fileContent);
     
     const directEvents = calendar.sync.parseICS(fileContent);
 

@@ -4,7 +4,8 @@ console.log('ICS-RENDERER');
 
 (async () => {
     const lesEvents = await window.electron.getEventFromICS()
-    
+
+    let lesValeurs = "";
         const divEvenements = document.getElementById('lesevents');
         let contenuHTML = '';
     
@@ -18,9 +19,22 @@ console.log('ICS-RENDERER');
                 <br>
                 <hr>
             `;
+
+            if (lesValeurs == "") {
+                lesValeurs += "('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date+"', '"+evenement.time+"')";
+            } else {
+                lesValeurs += ", ('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date+"', '"+evenement.time+"')";
+            }
         });
-    
+
         divEvenements.innerHTML = contenuHTML;
+
+        const valider = document.getElementById('importer');
+
+        valider.addEventListener('click', () => {
+            window.electron.ajoutEvent('evenements',"titre, description, date, time", lesValeurs)
+            
+        })
     
 })()
 

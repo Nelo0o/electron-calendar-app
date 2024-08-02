@@ -21,4 +21,13 @@ contextBridge.exposeInMainWorld('electron', {
         })
     },
     onRefreshData: (callback: () => void) => ipcRenderer.on('refresh-data', callback),
+    getEventFromICS: () =>  {
+        return new Promise((resolve: any, reject: any) => {
+            ipcRenderer.on('send-event', (evt: any, lesEvents: Array<IEvent>) => {
+                resolve(lesEvents)
+            })
+        })
+        
+    }
+    
 })

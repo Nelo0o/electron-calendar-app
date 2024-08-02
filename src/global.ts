@@ -14,6 +14,7 @@ declare global {
             getEventById: (id: number) => Promise<IEvent[]>
             getEventId: () => Promise<any>
             onRefreshData: (callback: () => void) => void
+            getEventFromICS: () => Promise<any>
         }
     }
 }

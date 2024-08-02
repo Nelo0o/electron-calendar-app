@@ -1,10 +1,26 @@
+import { IEvent } from "../../interfaces/IEvents";
+
 console.log('ICS-RENDERER');
 
+(async () => {
+    const lesEvents = await window.electron.getEventFromICS()
+    
+        const divEvenements = document.getElementById('lesevents');
+        let contenuHTML = '';
+    
+        lesEvents.forEach((evenement: IEvent) => {
+            contenuHTML += `
+                <br>
+                <h2>${evenement.titre}</h2>
+                <p>${evenement.description}</p>
+                <p>Date : ${evenement.date}</p>
+                <p>Heure : ${evenement.time}</p>
+                <br>
+                <hr>
+            `;
+        });
+    
+        divEvenements.innerHTML = contenuHTML;
+    
+})()
 
-// const lesevents = lafonction
-
-
-
-//for each lesevents blabla - Les events est un tableau d'objet
-
-// Quentin : fait un append child pour chauqe objet + Au click du bouton execuyter fonction

@@ -1,16 +1,18 @@
 import * as calendar from 'node-ical'
 import { ICSEvent } from '../interfaces/ICSEvent';
+import { IEvent } from '../interfaces/IEvents';
 import path from 'path';
 
-export function readICS() : string | void {
+export function readICS(chemin: Array<string>) : Array<IEvent> {
 
-    const filePath = path.join(__dirname, `../../assets/data.ics`);
+    //const filePath = path.join(__dirname, `../../assets/data.ics`);
+    const filePath = path.join(__dirname, chemin[0]);
 
 
     const events: Array<ICSEvent> = calendar.sync.parseFile(filePath);
 
 
-    let lesValues = "";
+    const lesValues: Array<IEvent> = [];
 
     for (const event of Object.values(events)) {
 
@@ -19,19 +21,18 @@ export function readICS() : string | void {
           });
 
         if (event.summary != undefined) {
-            const titre = event.summary;
-            const description = event.description;
-            const date = dateFR.format(event.start);
-            const time = new Date(event.start).toLocaleTimeString("fr-FR")
 
-            if (lesValues == "") {
-                lesValues += "('"+titre+"', '"+description+"', '"+date+"', '"+time+"')"
-            } else {
-                lesValues += ", ('"+titre+"', '"+description+"', '"+date+"', '"+time+"')"
+            const objetICS = {
+                titre: event.summary,
+                description:  event.description,
+                date: dateFR.format(event.start),
+                time: new Date(event.start).toLocaleTimeString("fr-FR")
             }
+            
+            lesValues.push(objetICS);
         }
     }
-    if (lesValues != "") {
+    if (lesValues.length > 0) {
         return(lesValues)
     }
     

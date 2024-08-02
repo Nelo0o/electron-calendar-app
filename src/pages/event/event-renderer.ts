@@ -17,7 +17,7 @@
             
         });
 
-    const modifier = document.getElementById('update');
+    const modifier = document.getElementById('valider');
     const supprimer = document.getElementById('delete');
 
     supprimer.addEventListener('click', async () => {

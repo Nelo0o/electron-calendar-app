@@ -1,4 +1,5 @@
 import Database from 'better-sqlite3';
+import { IEvent } from 'src/interfaces/IEvents';
 
 const db = new Database('agenda.db');
 
@@ -14,7 +15,7 @@ export function LireDBCustom(lesCollones = "*", laTable = 'evenements'): object 
 }
 
 
-export function getAllEvents() {
+export function getAllEvents(): Array<IEvent> {
 
     const rqLire = 'SELECT * FROM evenements';
 

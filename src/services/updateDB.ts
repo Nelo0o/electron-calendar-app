@@ -9,7 +9,7 @@ export function AjouteLigneCustom(laTable = 'event', lesChamps = "titre, descrip
 
     const addRow = db.prepare(rqAjout);
 
-    const logAdd =  addRow.run();
+    addRow.run();
 }
 
 export function SupprimeLigne(id: number): void  {
@@ -24,7 +24,7 @@ export function SupprimeLigne(id: number): void  {
 
     const delRow = db.prepare(rqSuppr);
 
-    const logAdd =  delRow.run();
+    delRow.run();
 }
 
 export function ModifieLigne(id: string, values = "description = 'despcition', titre = 'titre'"): void  {
@@ -35,5 +35,5 @@ export function ModifieLigne(id: string, values = "description = 'despcition', t
 
     const uppdtRow = db.prepare(rqUppdt);
 
-    const logAdd =  uppdtRow.run();
+    uppdtRow.run();
 }

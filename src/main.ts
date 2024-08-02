@@ -120,7 +120,7 @@ ipcMain.on('open-event-modal', (event, arg) => {
   OpenModale(arg)
 });
 
-function OpenModale (arg: string) {
+function OpenModale (arg) {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
@@ -174,7 +174,7 @@ ipcMain.on('open-ics-modal', (event, arg) => {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
-    icon: 'assets/icon-logo.ico',src
+    icon: 'assets/icon-logo.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },

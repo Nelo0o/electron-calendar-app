@@ -46,15 +46,16 @@ function fillEvents(month: Date): void {
     });
 }
 
-function displayEventsForDay(date: string): void {
+function displayEventsForDay(date: Date): void {
     const eventList: HTMLElement | null = document.getElementById('event-list');
     const eventListTitle: HTMLElement | null = document.getElementById('event-list-title');
     if (!eventList) return;
 
     eventList.innerHTML = '';
-
-    window.electron.getAllEvents().then(events => {
-        const eventsForDay = events.filter(event => event.date === date);
+    window.electron.getEventsByMonth(date.getMonth()).then(events => {
+        console.log(events );
+        
+        const eventsForDay = events.filter(event => event.date === date.getMonth());
         eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;
         if (eventsForDay.length === 0) {
             const noEventItem = document.createElement('li');
@@ -76,9 +77,9 @@ function displayEventsForDay(date: string): void {
     });
 }
 
-function renderCalendar(month: Date): void {
-    const startMonth: Date = startOfMonth(month);
-    const endMonth: Date = endOfMonth(month);
+function renderCalendar(date: Date): void {    
+    const startMonth: Date = startOfMonth(date);
+    const endMonth: Date = endOfMonth(date);
     const startDate: Date = startOfWeek(startMonth);
     const endDate: Date = endOfWeek(endMonth);
 
@@ -105,14 +106,14 @@ function renderCalendar(month: Date): void {
 
                 dayElement.addEventListener('click', () => {
                     const dateStr = day.getFullYear() + "-" + lejour + "-" + (day.getDate() < 10 ? "0" + day.getDate() : day.getDate());
-                    displayEventsForDay(dateStr);
+                    displayEventsForDay(date);
                 });
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
                     if (isSameDay(day, new Date())) {
                         dayElement.classList.add('currentDay');
-                        displayEventsForDay(day.getFullYear() + "-" + lejour + "-" + (day.getDate() < 10 ? "0" + day.getDate() : day.getDate()));
+                        displayEventsForDay(date);
                     }
                 } else {
                     dayElement.classList.add('otherMonthDay');
@@ -121,7 +122,7 @@ function renderCalendar(month: Date): void {
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');
-            fillEvents(month);
+            fillEvents(date);
         }, 200);
     }
 }

@@ -11,6 +11,7 @@ const nextMonthButton: HTMLElement | null = document.getElementById('nextMonth')
 const currentMonthDisplay: HTMLElement | null = document.getElementById('currentMonth');
 
 let currentMonth: Date = new Date();
+let selectedDayElement: HTMLElement | null = null;
 
 function createEventIndicator(): HTMLElement {
     const eventIndicator = document.createElement('span');
@@ -129,10 +130,14 @@ function renderCalendar(date: Date): void {
 
                 if (!estPasse) {
                     dayElement.addEventListener('click', () => {
+                        if (selectedDayElement) {
+                            selectedDayElement.classList.remove('selected-day');
+                        }
+                        dayElement.classList.add('selected-day');
+                        selectedDayElement = dayElement;
                         displayEventsForDay(day);
-
                     });
-            }
+                }
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');

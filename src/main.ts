@@ -1,13 +1,17 @@
 import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron';
 import path from 'path';
-import { CreateDb, importDB} from "./services/database";
-import { getEventById } from './services/readDB';
+import {importDB, CheckDB} from "./services/database";
 import './services/ipcService'
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
+}
+
+if (CheckDB() == 0) {
+  importDB(); 
+  console.log("Importation de la DB");
 }
 
 const createWindow = () => {
@@ -57,6 +61,31 @@ ipcMain.on('open-event-modal', (event, arg) => {
   
 });
 
+ipcMain.on('open-ics-modal', (event, arg) => {
+  const eventModal = new BrowserWindow({
+    width: 900,
+    height: 600,
+    icon: 'assets/icon-logo.ico',
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+    
+  });
+
+  eventModal.webContents.openDevTools();
+
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    eventModal.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/importICS/ics.html`);
+  } else {
+    eventModal.loadFile(path.join(__dirname, `../../src/pages/importICS/ics.html`));
+  }
+
+  if (parseInt(arg) != 0) {
+    eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
+  }
+  
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready tcreateTableo create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -83,7 +112,6 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-CreateDb();
-importDB(); 
-//console.log(getEventsById(10))
-//readICS();
+
+
+

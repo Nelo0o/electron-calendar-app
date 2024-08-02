@@ -22,7 +22,7 @@ function createEventIndicator(): HTMLElement {
 
 function fillEvents(month: Date): void {
 
-    const lesEvents = window.electron.getAllEvents().then((event) => {
+    const lesEvents =  window.electron.getEventsByMonth(month.getMonth()).then((event) => {
 
         event.forEach(lEvent => {
 
@@ -30,10 +30,11 @@ function fillEvents(month: Date): void {
 
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();
+                
+                lejour.removeEventListener('click', () => window.electron.openEventModal(0))
 
-                eventIndicator.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    // window.electron.openEventModal(lEvent.id);
+                lejour.addEventListener('click', () => {
+                    window.electron.openEventModal(lEvent.id);
                 })
 
                 lejour.appendChild(eventIndicator);

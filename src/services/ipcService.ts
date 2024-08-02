@@ -1,10 +1,8 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { getAllEvents, getEventById, getEventsByMonth } from "./readDB";
+import { getEventById, getEventsByMonth } from "./readDB";
 import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
-
-ipcMain.handle('get-all-events', getAllEvents);
 
 ipcMain.handle('get-month-events', async (evt, month: number) => {
     return getEventsByMonth(month);
@@ -24,9 +22,9 @@ ipcMain.handle('supprime-event', async (evt, id: number) => {
     return "supprime ok"
 })
 
-ipcMain.handle('modifie-event', async (evt, id: number) => {
+ipcMain.handle('modif-event', async (evt, id: string, values: string) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await ModifieLigne(id)
+    await ModifieLigne(id, values)
     if (win) win.close()
     return "modif ok"
 })

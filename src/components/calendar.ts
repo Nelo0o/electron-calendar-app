@@ -46,7 +46,7 @@ function displayEventsForDay(date: Date): void {
     if (!eventList) return;
 
     eventList.innerHTML = '';
-    window.electron.getEventsByMonth(date.getMonth()).then(events => {
+    window.electron.getEventsByDay(date.getDay()).then(events => {
         
         const eventsForDay = events.filter(event => parseInt(event.date) == date.getMonth());
         eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;

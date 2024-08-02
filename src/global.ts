@@ -4,7 +4,6 @@ export { }
 declare global {
     interface Window {
         "electron": {
-            getAllEvents: () => Promise<IEvent[]>
             getEventsByMonth: (month: number) => Promise<IEvent[]>
             ajoutEvent: (params: IEvent) => Promise<string>
             supprimeEvent: (id: string) => Promise<string>

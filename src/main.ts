@@ -1,11 +1,10 @@
-import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, shell, dialog } from 'electron';
 import path from 'path';
 import {importDB, CheckDB} from "./services/database";
 import { getAllEvents } from './services/readDB';
 import './services/ipcService'
 import { WriteICS } from './services/exportICS';
 import { readICS } from './services/importICS';
-import { dialog } from 'electron';
 import { IEvent } from './interfaces/IEvents';
 
 
@@ -114,6 +113,17 @@ const createWindow = () => {
 
 ipcMain.on('open-event-modal', (event, arg) => {
   OpenModale(arg);
+});
+
+ipcMain.handle('show-confirmation-dialog', async (event, message) => {
+  const result = await dialog.showMessageBox(mainWindow, {
+    type: 'question',
+    buttons: ['Oui', 'Non'],
+    defaultId: 1,
+    title: 'Confirmation',
+    message: message,
+  });
+  return result.response === 0;
 });
 
 function OpenModale (arg) {

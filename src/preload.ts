@@ -27,7 +27,6 @@ contextBridge.exposeInMainWorld('electron', {
                 resolve(lesEvents)
             })
         })
-        
-    }
-    
+    },
+    showConfirmationDialog: (message: string) => ipcRenderer.invoke('show-confirmation-dialog', message)
 })

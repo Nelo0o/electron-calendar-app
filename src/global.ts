@@ -15,6 +15,7 @@ declare global {
             getEventId: () => Promise<any>
             onRefreshData: (callback: () => void) => void
             getEventFromICS: () => Promise<any>
+            showConfirmationDialog: (message: string) => Promise<boolean>
         }
     }
 }

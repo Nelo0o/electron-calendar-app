@@ -21,7 +21,10 @@
     const supprimer = document.getElementById('supprimer');
 
     supprimer.addEventListener('click', async () => {
-        await window.electron.supprimeEvent(id.value);
+        const confirmed = await window.electron.showConfirmationDialog('Êtes-vous sûr de vouloir supprimer cet événement ?');
+        if (confirmed) {
+            await window.electron.supprimeEvent(id.value);
+        }
     })
 
     modifier.addEventListener('click', () => {

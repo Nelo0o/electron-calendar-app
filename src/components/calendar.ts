@@ -27,13 +27,13 @@ function fillEvents(month: Date): void {
         event.forEach(lEvent => {
     
             if (document.getElementById(lEvent.date)) {               
-                console.log(lEvent.id);
                 
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();
                 
-                eventIndicator.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                lejour.removeEventListener('click', () => window.electron.openEventModal(0))
+
+                lejour.addEventListener('click', () => {
                     window.electron.openEventModal(lEvent.id);
                 })
 

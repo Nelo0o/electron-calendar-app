@@ -20,9 +20,11 @@ export function getAllEvents() {
 
     const lireLigne = db.prepare(rqLire);
 
-    const lesLignes =  lireLigne.all();
-
-    return lesLignes;
+    try {
+        return (lireLigne.all());
+    }catch(e) {
+        return("ERROR")
+    }
 }
 
 export function getEventsByMonth(leMois: number) {
@@ -64,10 +66,11 @@ export function getEventsByMonth(leMois: number) {
 
     const lireLigne = db.prepare(rqLire);
 
-    const lesLignes =  lireLigne.all();
-    
-
-    return lesLignes;
+    try {
+        return (lireLigne.all());
+    }catch(e) {
+        return("ERROR")
+    }
 }
 
 export function getEventById(id : number) {

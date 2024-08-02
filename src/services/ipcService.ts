@@ -8,8 +8,8 @@ ipcMain.handle('get-month-events', async (evt, month: number) => {
     return getEventsByMonth(month);
 });
 
-ipcMain.handle('get-day-events', async (evt, day: number) => {
-    return getEventByDay(day);
+ipcMain.handle('get-day-events', async (evt, date: Date) => {
+    return getEventByDay(date);
 });
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {

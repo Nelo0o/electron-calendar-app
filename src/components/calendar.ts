@@ -41,22 +41,24 @@ function fillEvents(month: Date): void {
 }
 
 function displayEventsForDay(date: Date): void {
+    const eventListContainer: HTMLElement | null = document.querySelector('.event-list-container');
     const eventList: HTMLElement | null = document.getElementById('event-list');
     const eventListTitle: HTMLElement | null = document.getElementById('event-list-title');
-    if (!eventList) return;
+    if (!eventList) {
+        return;
+    }
 
+    eventListContainer.classList.add('transition');
     eventList.innerHTML = '';
-    window.electron.getEventsByMonth(date.getMonth()).then(events => {
-        
-        const eventsForDay = events.filter(event => parseInt(event.date) == date.getMonth());
-        eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;
-        if (eventsForDay.length === 0) {
+
+    window.electron.getEventsByDay(date).then(events => {
+        if (events.length === 0) {
             const noEventItem = document.createElement('li');
             noEventItem.textContent = "Aucun événement de prévu";
             noEventItem.classList.add('no-event');
             eventList.appendChild(noEventItem);
         } else {
-            eventsForDay.forEach(event => {
+            events.forEach(event => {
                 const eventItem = document.createElement('li');
                 eventItem.textContent = `${event.time.slice(0, 5)} - ${event.titre}`;
                 eventList.appendChild(eventItem);
@@ -65,6 +67,11 @@ function displayEventsForDay(date: Date): void {
                 })
             });
         }
+        setTimeout(() => {
+            eventListContainer.classList.remove('transition');
+            eventListContainer.classList.add('is-visible');
+            eventListTitle.textContent = `Liste des événements du ${format(new Date(date), 'dd/MM/yyyy')}`;
+        }, 200);
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);
     });
@@ -98,8 +105,7 @@ function renderCalendar(date: Date): void {
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    const dateStr = day.getFullYear() + "-" + lejour + "-" + (day.getDate() < 10 ? "0" + day.getDate() : day.getDate());
-                    displayEventsForDay(date);
+                    displayEventsForDay(day);
                 });
 
                 if (day >= startMonth && day <= endMonth) {

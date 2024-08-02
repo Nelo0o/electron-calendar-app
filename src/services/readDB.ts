@@ -83,12 +83,18 @@ export function getEventById(id : number) {
     return lesLignes;
 }
 
-export function getEventByDay(leJour: number) {
+export function getEventByDay(date: Date) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
 
-    const rqLire = "SELECT * FROM evenements WHERE strftime('%d', date) = "+leJour+"";
+    const rqLire = `SELECT * FROM evenements WHERE strftime('%d', date) = '${day < 10 ? '0' + day : day}' AND strftime('%m', date) = '${month < 10 ? '0' + month : month}' AND strftime('%Y', date) = '${year}'`;
     const lireLigne = db.prepare(rqLire);
 
-    const lesLignes =  lireLigne.all();
-
-    return lesLignes;
+    try {
+        return lireLigne.all();
+    } catch (e) {
+        console.error("Erreur lors de la récupération des événements :", e);
+        return [];
+    }
 }

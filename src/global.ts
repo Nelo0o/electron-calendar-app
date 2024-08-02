@@ -5,7 +5,7 @@ declare global {
     interface Window {
         "electron": {
             getEventsByMonth: (month: number) => Promise<IEvent[]>
-            getEventsByDay: (day: number) => Promise<IEvent[]>
+            getEventsByDay: (day: Date) => Promise<IEvent[]>
             ajoutEvent: (params: IEvent) => Promise<string>
             supprimeEvent: (id: string) => Promise<string>
             modifieEvent: (id: string, values: string) => Promise<string>

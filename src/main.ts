@@ -121,7 +121,7 @@ ipcMain.handle('show-confirmation-dialog', async (event, message) => {
     buttons: ['Oui', 'Non'],
     defaultId: 1,
     title: 'Confirmation',
-    message: message,
+    message: message
   });
   return result.response === 0;
 });
@@ -130,6 +130,8 @@ function OpenModale (arg) {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
+    parent: mainWindow,
+    modal: true,
     icon: 'assets/icon-logo.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

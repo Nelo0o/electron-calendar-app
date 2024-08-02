@@ -20,15 +20,16 @@
     const modifier = document.getElementById('valider');
     const supprimer = document.getElementById('supprimer');
 
-    supprimer.addEventListener('click', async () => {
-        await window.electron.showConfirmationDialog('Êtes-vous sûr de vouloir supprimer cet événement ?').then( (e) =>
-            console.log(e))
-            if (confirmed) {
-                //window.electron.supprimeEvent(id.value);
-            }
+    supprimer.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const confirmed = await window.electron.showConfirmationDialog('Êtes-vous sûr de vouloir supprimer cet événement ?');
+        if (confirmed) {
+            window.electron.supprimeEvent(id.value);
+        }
     })
 
-    modifier.addEventListener('click', () => {
+    modifier.addEventListener('click', (event) => {
+        event.preventDefault();
         const values = "description = '"+description.value+"', titre = '"+titre.value+"', date = '"+date.value+"', time = '"+time.value+"'"
         window.electron.modifieEvent(id.value, values)
     })

@@ -1,3 +1,5 @@
+import { IEvent } from "../../interfaces/IEvents";
+
 console.log('ICS-RENDERER');
 
 (async () => {
@@ -6,7 +8,7 @@ console.log('ICS-RENDERER');
         const divEvenements = document.getElementById('lesevents');
         let contenuHTML = '';
     
-        lesEvents.forEach((evenement) => {
+        lesEvents.forEach((evenement: IEvent) => {
             contenuHTML += `
                 <br>
                 <h2>${evenement.titre}</h2>

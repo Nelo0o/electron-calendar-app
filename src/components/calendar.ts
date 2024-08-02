@@ -30,12 +30,6 @@ function fillEvents(month: Date): void {
 
                 const lejour: HTMLElement = document.getElementById(lEvent.date);
                 const eventIndicator = createEventIndicator();
-                
-                lejour.removeEventListener('click', () => window.electron.openEventModal(0))
-
-                lejour.addEventListener('click', () => {
-                    window.electron.openEventModal(lEvent.id);
-                })
 
                 lejour.appendChild(eventIndicator);
             }

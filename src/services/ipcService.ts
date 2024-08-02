@@ -1,11 +1,15 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { getEventById, getEventsByMonth } from "./readDB";
+import { getEventById, getEventsByMonth, getEventByDay } from "./readDB";
 import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 
 ipcMain.handle('get-month-events', async (evt, month: number) => {
     return getEventsByMonth(month);
+});
+
+ipcMain.handle('get-day-events', async (evt, day: number) => {
+    return getEventByDay(day);
 });
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {

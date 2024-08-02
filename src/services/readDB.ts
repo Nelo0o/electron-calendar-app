@@ -82,3 +82,13 @@ export function getEventById(id : number) {
 
     return lesLignes;
 }
+
+export function getEventByDay(leJour: number) {
+
+    const rqLire = "SELECT * FROM evenements WHERE strftime('%d', date) = "+leJour+"";
+    const lireLigne = db.prepare(rqLire);
+
+    const lesLignes =  lireLigne.all();
+
+    return lesLignes;
+}

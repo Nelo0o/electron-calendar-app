@@ -25,9 +25,40 @@ export function getAllEvents() {
     return lesLignes;
 }
 
-export function getEventsByMonth(leMois: Date) {
+export function getEventsByMonth(leMois: number) {
 
-    const rqLire = "SELECT * FROM evenements WHERE strftime('%m', date) = '"+leMois+"'";
+    let lemoisAp = 0;
+    let lemoisAv = 0;
+    
+    if (leMois == 1) {
+        lemoisAv = 12;
+    } else {
+        lemoisAv = leMois--;
+    }
+
+    if (leMois == 12) {
+        lemoisAp = 1;
+    } else {
+        lemoisAp = leMois++;
+    }
+
+    let lemoisApOK = lemoisAp.toString();
+    let lemoisAvOK = lemoisAv.toString();
+    let lemoisOK = leMois.toString();
+
+    if (lemoisApOK != "10" && lemoisApOK != "11" && lemoisApOK != "12") {
+        lemoisApOK = "0"+lemoisApOK;
+    }
+    if (lemoisAvOK != "10" && lemoisAvOK != "11" && lemoisAvOK != "12") {
+        lemoisAvOK = "0"+lemoisAvOK;
+    }
+    if (lemoisOK != "10" && lemoisOK != "11" && lemoisOK != "12") {
+        lemoisOK = "0"+lemoisOK;
+    }
+
+
+
+    const rqLire = "SELECT * FROM evenements WHERE strftime('%m', date) IN ('"+lemoisAvOK+"', '"+lemoisOK+"', '"+lemoisApOK+"')";
 
     const lireLigne = db.prepare(rqLire);
 
@@ -39,7 +70,6 @@ export function getEventsByMonth(leMois: Date) {
 export function getEventById(id : number) {
 
     const rqLire = "SELECT * FROM evenements WHERE id ="+id+"";
-
     const lireLigne = db.prepare(rqLire);
 
     const lesLignes =  lireLigne.all();

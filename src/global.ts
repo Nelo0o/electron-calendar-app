@@ -4,11 +4,15 @@ export { }
 declare global {
     interface Window {
         "electron": {
-            getAllEvents: () => Array<IEvent>
+            getEventsByMonth: (month: number) => Promise<IEvent[]>
+            getEventsByDay: (day: Date) => Promise<IEvent[]>
             ajoutEvent: (params: IEvent) => Promise<string>
-            supprimeEvent: (id: number) => Promise<string>
-            modifieEvent: (id: number) => Promise<string>
-            openEventModal: (date: Date) => void
+            supprimeEvent: (id: string) => Promise<string>
+            modifieEvent: (id: string, values: string) => Promise<string>
+            openEventModal: (id: number) => void
+            openICSModal: (id: number) => void
+            getEventById: (id: number) => Promise<IEvent[]>
+            getEventId: () => Promise<any>
         }
     }
 }

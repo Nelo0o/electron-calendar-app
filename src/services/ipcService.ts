@@ -1,14 +1,20 @@
 import { BrowserWindow, ipcMain } from "electron";
-import { getAllEvents } from "./readDB";
-import { IEvent } from "src/interfaces/IEvents";
+import { getEventById, getEventsByMonth, getEventByDay } from "./readDB";
+import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 
-ipcMain.handle('get-all-events', getAllEvents) 
+ipcMain.handle('get-month-events', async (evt, month: number) => {
+    return getEventsByMonth(month);
+});
+
+ipcMain.handle('get-day-events', async (evt, date: Date) => {
+    return getEventByDay(date);
+});
 
 ipcMain.handle('ajout-event', async (evt, params: IEvent) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await AjouteLigneCustom('evenements',"titre, description, date, time",""+params.title+", "+params.description+", "+params.start+", "+params.end+"")
+    await AjouteLigneCustom('evenements',"titre, description, date, time",""+params.titre+", "+params.description+", "+params.date+", "+params.time+"")
     if (win) win.close()
     return "ajout ok"
 })
@@ -20,9 +26,13 @@ ipcMain.handle('supprime-event', async (evt, id: number) => {
     return "supprime ok"
 })
 
-ipcMain.handle('modifie-event', async (evt, id: number) => {
+ipcMain.handle('modif-event', async (evt, id: string, values: string) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await ModifieLigne(id)
+    await ModifieLigne(id, values)
     if (win) win.close()
     return "modif ok"
 })
+
+ipcMain.handle('get-event-id', async (evt, id: number) => {
+    return getEventById(id);
+});

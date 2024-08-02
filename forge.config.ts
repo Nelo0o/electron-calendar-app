@@ -6,10 +6,12 @@ import { MakerRpm } from '@electron-forge/maker-rpm';
 import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
+import path from 'path';
 
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
+    icon: 'src/assets/icon-logo',
   },
   rebuildConfig: {},
   makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
@@ -25,10 +27,6 @@ const config: ForgeConfig = {
         },
         {
           entry: 'src/preload.ts',
-          config: 'vite.preload.config.ts',
-        },
-        {
-          entry: 'src/pages/event/event-preload.ts',
           config: 'vite.preload.config.ts',
         }
       ],

@@ -1,9 +1,11 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, shell } from 'electron';
 import path from 'path';
-import { CreateDb, importDB} from "./services/database";
-import { readICS } from './services/importICS';
+import {importDB, CheckDB} from "./services/database";
 import { getAllEvents } from './services/readDB';
 import './services/ipcService'
+import { WriteICS } from './services/exportICS';
+import { readICS } from './services/importICS';
+import { dialog } from 'electron';
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -11,11 +13,17 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+if (CheckDB() == 0) {
+  importDB(); 
+  console.log("Importation de la DB");
+}
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    icon: 'assets/icon-logo.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
@@ -30,17 +38,132 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  const menuTemplate: Electron.MenuItemConstructorOptions[] = [
+    {
+        label: 'Evénements',
+        submenu: [
+            {
+                label: 'Ajouter un event',
+                click: () => {
+                  OpenModale(0)
+                },
+            },
+        ],
+    },
+    {
+        label: 'Import/Export',
+        submenu: [
+            {
+                label: 'Importer un fichier ICS',
+                click: (e) => {
+                    console.log('Import ICS');
+                    dialog.showOpenDialog(e.sender, {
+                      title: "Selectionnez votre import ICS",
+                      filters: [{ name: "fichier ICS", extensions: ["ics"] }],
+                      properties: ["openFile"]
+                    }).then(res => {
+                        readICS(res.filePaths);
+                    })
+                },
+            },
+            {
+                label: 'Exporter en fichier ICS',
+                click: (e) => {
+                    dialog.showSaveDialog(e.sender, {
+                      title: "Sauvegarder l'export ICS",
+                      filters: [{ name: "fichier ICS", extensions: ["ics"] }],
+                    }).then(res => {
+                      const lesEvents = getAllEvents();
+                      WriteICS(lesEvents, res.filePath)
+                      console.log(res.filePath);
+                    })
+                },
+            },
+        ],
+    },
+    {
+      label: 'A propos',
+      submenu: [
+          {
+              label: 'Repo Github',
+              click: () => {
+                shell.openExternal('https://github.com/Nelo0o/electron-calendar-app');
+              },
+          },
+          {
+            label: 'Patreon',
+            click: () => {
+              shell.openExternal('https://www.patreon.com/fr-FR');
+            },
+        },
+      ],
+  },
+  {
+    label: 'Aide',
+    click: () => {
+      shell.openExternal('https://perdu.com');
+    },
+},
+];
+
+const menu = Menu.buildFromTemplate(menuTemplate);
+Menu.setApplicationMenu(menu);
+
 };
 
 ipcMain.on('open-event-modal', (event, arg) => {
+  OpenModale(arg)
+});
+
+function OpenModale (arg) {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,
+    icon: 'assets/icon-logo.ico',
     webPreferences: {
-      preload: path.join(__dirname, 'event-preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
     },
+    
   });
-  eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
+
+  eventModal.webContents.openDevTools();
+
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    eventModal.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/event/event.html`);
+  } else {
+    eventModal.loadFile(path.join(__dirname, `../../src/pages/event/event.html`));
+  }
+
+  if (parseInt(arg) != 0) {
+    eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
+  }
+}
+
+
+ipcMain.on('open-ics-modal', (event, arg) => {
+  const eventModal = new BrowserWindow({
+    width: 900,
+    height: 600,
+    icon: 'assets/icon-logo.ico',
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+    
+  });
+
+  eventModal.webContents.openDevTools();
+
+  if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
+    eventModal.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/src/pages/importICS/ics.html`);
+  } else {
+    eventModal.loadFile(path.join(__dirname, `../../src/pages/importICS/ics.html`));
+  }
+
+  if (parseInt(arg) != 0) {
+    eventModal.webContents.once('dom-ready', () => eventModal.webContents.send('send-id', arg))
+  }
+  
 });
 
 // This method will be called when Electron has finished
@@ -65,5 +188,10 @@ app.on('activate', () => {
   }
 });
 
+
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+
+
+

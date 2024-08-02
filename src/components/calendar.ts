@@ -1,6 +1,7 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
-import { IEvent } from 'src/interfaces/IEvents';
+import { ipcRenderer, ipcMain } from 'electron';
+import { IEvent } from '../interfaces/IEvents';
 
 console.log("calendar api", window.electron);
 
@@ -11,37 +12,80 @@ const currentMonthDisplay: HTMLElement | null = document.getElementById('current
 
 let currentMonth: Date = new Date();
 
-function fillEvents(month: Date): void {
-
-    const lesEvents =  window.electron.getAllEvents().then((event) => {
-
-        event.forEach(lEvent => {
-    
-            if (document.getElementById(lEvent.date)) {
-                console.log(lEvent.id, lEvent.date)
-                const lejour: HTMLElement = document.getElementById(lEvent.date);
-                lejour.classList.add('event');
-                lejour.addEventListener('click', () => {
-                    window.electron.openEventModal(lEvent.id);
-                })
-            }
-           
-        })
-    })
-
+function createEventIndicator(): HTMLElement {
+    const eventIndicator = document.createElement('span');
+    eventIndicator.className = 'event-indicator';
+    return eventIndicator;
 }
 
 
-function renderCalendar(month: Date): void {
-    const startMonth: Date = startOfMonth(month);
-    const endMonth: Date = endOfMonth(month);
+
+function fillEvents(month: Date): void {
+
+    const lesEvents =  window.electron.getEventsByMonth(month.getMonth()).then((event) => {
+
+        event.forEach(lEvent => {
+
+            if (document.getElementById(lEvent.date)) {
+
+                const lejour: HTMLElement = document.getElementById(lEvent.date);
+                const eventIndicator = createEventIndicator();
+
+                lejour.appendChild(eventIndicator);
+            }
+
+        })
+    }).catch(error => {
+        console.error("Erreur lors de la récupération des événements :", error);
+    });
+}
+
+function displayEventsForDay(date: Date): void {
+    const eventListContainer: HTMLElement | null = document.querySelector('.event-list-container');
+    const eventList: HTMLElement | null = document.getElementById('event-list');
+    const eventListTitle: HTMLElement | null = document.getElementById('event-list-title');
+    if (!eventList) {
+        return;
+    }
+
+    eventListContainer.classList.add('transition');
+    eventList.innerHTML = '';
+
+    window.electron.getEventsByDay(date).then(events => {
+        if (events.length === 0) {
+            const noEventItem = document.createElement('li');
+            noEventItem.textContent = "Aucun événement de prévu";
+            noEventItem.classList.add('no-event');
+            eventList.appendChild(noEventItem);
+        } else {
+            events.forEach(event => {
+                const eventItem = document.createElement('li');
+                eventItem.textContent = `${event.time.slice(0, 5)} - ${event.titre}`;
+                eventList.appendChild(eventItem);
+                eventItem.addEventListener('click', () => {
+                    window.electron.openEventModal(event.id);
+                })
+            });
+        }
+        setTimeout(() => {
+            eventListContainer.classList.remove('transition');
+            eventListContainer.classList.add('is-visible');
+            eventListTitle.textContent = `Evénements du ${format(new Date(date), 'dd/MM/yyyy')}`;
+        }, 200);
+    }).catch(error => {
+        console.error("Erreur lors de la récupération des événements :", error);
+    });
+}
+
+function renderCalendar(date: Date): void {    
+    const startMonth: Date = startOfMonth(date);
+    const endMonth: Date = endOfMonth(date);
     const startDate: Date = startOfWeek(startMonth);
     const endDate: Date = endOfWeek(endMonth);
 
     const days: Date[] = eachDayOfInterval({ start: startDate, end: endDate });
 
-    
-    if (calendarContent) {month: Date
+    if (calendarContent) {
         calendarContent.classList.add('transition');
 
         setTimeout(() => {
@@ -51,22 +95,24 @@ function renderCalendar(month: Date): void {
                 const dayElement: HTMLDivElement = document.createElement('div');
                 dayElement.className = 'day';
                 let lejour = "";
-                if (day.getMonth() >= 10) {
-                    lejour = ""+day.getMonth()
+                const monthIndex = day.getMonth() + 1;
+                if (monthIndex >= 10) {
+                    lejour = "" + monthIndex;
                 } else {
-                    lejour = "0"+day.getMonth()
+                    lejour = "0" + monthIndex;
                 }
-                dayElement.setAttribute("id", day.getDate()+"/"+lejour+"/"+day.getFullYear());
+                dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + day.getDate());
                 dayElement.textContent = format(day, 'd');
 
                 dayElement.addEventListener('click', () => {
-                    window.electron.openEventModal(day);
+                    displayEventsForDay(day);
                 });
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
                     if (isSameDay(day, new Date())) {
                         dayElement.classList.add('currentDay');
+                        displayEventsForDay(date);
                     }
                 } else {
                     dayElement.classList.add('otherMonthDay');
@@ -75,11 +121,9 @@ function renderCalendar(month: Date): void {
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');
-            fillEvents(month);
+            fillEvents(date);
         }, 200);
     }
-
-
 }
 
 function updateMonthDisplay(month: Date): void {

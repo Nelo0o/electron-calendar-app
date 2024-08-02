@@ -1,44 +1,43 @@
 import * as calendar from 'node-ical'
+import { ICSEvent } from '../interfaces/ICSEvent';
+import { IEvent } from '../interfaces/IEvents';
 import path from 'path';
-import { AjouteLigneCustom } from './updateDB';
 
-export function readICS() : void {
+export function readICS(chemin: Array<string>) : Array<IEvent> | void {
 
-    const filePath = path.join(__dirname, `../../assets/data.ics`);
-
-
-    const events = calendar.sync.parseFile(filePath);
+    //const filePath = path.join(__dirname, `../../assets/data.ics`);
+    const filePath = path.join(__dirname, chemin[0]);
 
 
-    let lesValues = "";
+    const events: Array<ICSEvent> = calendar.sync.parseFile(filePath);
+
+
+    const lesValues: Array<IEvent> = [];
 
     for (const event of Object.values(events)) {
-        /*console.log(
-            'Summary: ' + event.summary +
-            '\nDescription: ' + event.description +
-            '\nStart Date: ' + event.start +
-            '\n' 
-        );*/
 
         const dateFR = new Intl.DateTimeFormat("fr-FR", {
             dateStyle: "short",
           });
 
         if (event.summary != undefined) {
-            let titre = event.summary;
-            let description = event.description;
-            let date = dateFR.format(event.start);
-            let time = new Date(event.start).toLocaleTimeString("fr-FR")
 
-            if (lesValues == "") {
-                lesValues += "('"+titre+"', '"+description+"', '"+date+"', '"+time+"')"
-            } else {
-                lesValues += ", ('"+titre+"', '"+description+"', '"+date+"', '"+time+"')"
+            const objetICS = {
+                titre: event.summary,
+                description:  event.description,
+                date: dateFR.format(event.start),
+                time: new Date(event.start).toLocaleTimeString("fr-FR")
             }
+            
+            lesValues.push(objetICS);
         }
-    };
-
-    if (lesValues != "") {
-        AjouteLigneCustom("evenements", "titre, description, date, time", lesValues)
     }
+    if (lesValues.length > 0) {
+        return(lesValues)
+    }
+    
+
+    /*if (lesValues != "") {
+        AjouteLigneCustom("evenements", "titre, description, date, time", lesValues)
+    }*/
 }

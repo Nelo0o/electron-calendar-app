@@ -1,43 +1,39 @@
-console.log('ICS-RENDERER');
+import { IEvent } from "../../interfaces/IEvents";
 
-// const lesevents = lafonction
+(async () => {
+    const lesEvents = await window.electron.getEventFromICS()
 
-//for each lesevents blabla - Les events est un tableau d'objet
+    let lesValeurs = "";
+        const divEvenements = document.getElementById('lesevents');
+        let contenuHTML = '';
+    
+        lesEvents.forEach((evenement: IEvent) => {
+            contenuHTML += `
+                <br>
+                <h2>Titre : ${evenement.titre}</h2>
+                <p>Descrition : ${evenement.description}</p>
+                <p>Date de début : ${evenement.date_deb}</p>
+                <p>Date de fin : ${evenement.date_fin}</p>
+                <p>Lieu : ${evenement.location}</p>
+                <br>
+                <hr>
+            `;
 
-// Quentin : fait un append child pour chauqe objet + Au click du bouton execuyter fonction
+            if (lesValeurs == "") {
+                lesValeurs += "('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date_deb+"', '"+evenement.date_fin+"', '"+evenement.location+"')";
+            } else {
+                lesValeurs += ", ('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date_deb+"', '"+evenement.date_fin+"', '"+evenement.location+"')";
+            }
+        });
 
-const lesevents = [
-    {
-        titre: "titre1",
-        description: "description1",
-        date: "date1",
-        time: "time1",
-    },
-    {
-        titre: "titre2",
-        description: "description2",
-        date: "date2",
-        time: "time2",
-    },
-]
+        divEvenements.innerHTML = contenuHTML;
 
-function afficherEvenements() {
-    const divEvenements = document.getElementById('lesevents');
-    let contenuHTML = '';
+        const valider = document.getElementById('importer');
 
-    lesevents.forEach((evenement) => {
-        contenuHTML += `
-            <br>
-            <h2>${evenement.titre}</h2>
-            <p>${evenement.description}</p>
-            <p>Date : ${evenement.date}</p>
-            <p>Heure : ${evenement.time}</p>
-            <br>
-            <hr>
-        `;
-    });
+        valider.addEventListener('click', () => {
+            window.electron.ajoutEvent('event',"titre, description, date_deb, date_fin, location", lesValeurs)
+            
+        })
+    
+})()
 
-    divEvenements.innerHTML = contenuHTML;
-}
-
-document.addEventListener('DOMContentLoaded', afficherEvenements);

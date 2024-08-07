@@ -1,17 +1,13 @@
 import * as calendar from 'node-ical'
-import { ICSEvent } from '../interfaces/ICSEvent';
+import { ICSEvenement } from '../interfaces/ICSEvent';
 import { IEvent } from '../interfaces/IEvents';
-import path from 'path';
 
-export function readICS(chemin: Array<string>) : Array<IEvent> | void {
-
-    //const filePath = path.join(__dirname, `../../assets/data.ics`);
-    const filePath = path.join(__dirname, chemin[0]);
+export function readICS(chemin: Array<string>) : Array<IEvent> {
 
 
-    const events: Array<ICSEvent> = calendar.sync.parseFile(filePath);
+    const events: Array<ICSEvenement> = calendar.sync.parseFile(chemin[0]);
 
-
+    console.log(events);
     const lesValues: Array<IEvent> = [];
 
     for (const event of Object.values(events)) {
@@ -25,19 +21,19 @@ export function readICS(chemin: Array<string>) : Array<IEvent> | void {
             const objetICS = {
                 titre: event.summary,
                 description:  event.description,
-                date: dateFR.format(event.start),
-                time: new Date(event.start).toLocaleTimeString("fr-FR")
+                date_deb: dateFR.format(event.start),
+                date_fin: dateFR.format(event.end),
+                location: event.location
             }
+
             
             lesValues.push(objetICS);
         }
     }
+
+
+    
     if (lesValues.length > 0) {
         return(lesValues)
     }
-    
-
-    /*if (lesValues != "") {
-        AjouteLigneCustom("evenements", "titre, description, date, time", lesValues)
-    }*/
 }

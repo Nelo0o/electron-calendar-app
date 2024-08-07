@@ -1,6 +1,5 @@
 import { BrowserWindow, ipcMain } from "electron";
 import { getEventById, getEventsByMonth, getEventByDay } from "./readDB";
-import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 
@@ -12,9 +11,9 @@ ipcMain.handle('get-day-events', async (evt, date: Date) => {
     return getEventByDay(date);
 });
 
-ipcMain.handle('ajout-event', async (evt, params: IEvent) => {
+ipcMain.handle('ajout-event', async (evt, table: string, zones: string, contenu: string) => {
     const win = BrowserWindow.fromWebContents(evt.sender)
-    await AjouteLigneCustom('evenements',"titre, description, date, time",""+params.titre+", "+params.description+", "+params.date+", "+params.time+"")
+    await AjouteLigneCustom(table, zones, contenu)
     if (win) win.close()
     return "ajout ok"
 })

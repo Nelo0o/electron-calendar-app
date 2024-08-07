@@ -25,5 +25,12 @@
  *  });
  * ```
  */
+import './components/calendar';
+import { renderCalendar, fillEvents, displayEventsForDay } from './components/calendar';
 
-import './components/calendar.ts'; 
+window.electron.onRefreshData(() => {
+    const currentMonth = new Date();
+    renderCalendar(currentMonth);
+    displayEventsForDay(currentMonth);
+    fillEvents(currentMonth);
+});

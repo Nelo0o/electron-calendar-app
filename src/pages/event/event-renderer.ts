@@ -6,6 +6,12 @@
     const date = document.getElementById('eventDatedeb') as HTMLInputElement
     const time = document.getElementById('eventTime') as HTMLInputElement
     const id = document.getElementById('eventId') as HTMLInputElement
+    const dateFin = document.getElementById('eventDatefin') as HTMLInputElement
+    const timeFin = document.getElementById('eventTimefin') as HTMLInputElement
+    const location = document.getElementById('eventLieu') as HTMLInputElement
+    const categorie = document.getElementById('eventcategorie') as HTMLInputElement
+    const status = document.getElementById('eventStatus') as HTMLInputElement
+    const nbMaj = document.getElementById('eventnbmaj') as HTMLInputElement
     
     window.electron.getEventById(idEvt).then(event => {
     
@@ -14,7 +20,12 @@
             date.setAttribute('value', event[0].date_deb.slice(0, 10));
             time.setAttribute('value', event[0].date_deb.slice(11, 16));
             id.setAttribute('value', (event[0].id).toString())
-            
+            dateFin.setAttribute('value', event[0].date_fin.slice(0, 10));
+            timeFin.setAttribute('value', event[0].date_fin.slice(11, 16));
+            location.innerHTML = event[0].location;
+            categorie.setAttribute('value', event[0].categorie);
+            status.setAttribute('value', event[0].statut);
+            nbMaj.setAttribute('value', event[0].nbMaj);
         });
 
     const modifier = document.getElementById('valider');
@@ -30,7 +41,8 @@
 
     modifier.addEventListener('click', (event) => {
         event.preventDefault();
-        const values = "description = '"+description.value+"', titre = '"+titre.value+"', date = '"+date.value+"', time = '"+time.value+"'"
+        const values = "description = '"+description.value+"', titre = '"+titre.value+"', date_deb = '"+date.value+" "+time.value+"', date_fin = '"+dateFin.value+" "+timeFin.value+"', location = '"+location.value+"', categorie = '"+categorie.value+"', statut = '"+status.value+"', nbMaj= '"+((parseInt(nbMaj.value)+1).toString())+"'";
+
         window.electron.modifieEvent(id.value, values)
     })
     

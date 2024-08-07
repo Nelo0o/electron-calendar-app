@@ -12,10 +12,10 @@
             id.setAttribute('value', (event[0].id).toString())
             dateFin.setAttribute('value', event[0].date_fin.slice(0, 10));
             timeFin.setAttribute('value', event[0].date_fin.slice(11, 16));
-            location.innerHTML = event[0].location;
+            lieu.innerHTML = event[0].location;
             categorie.setAttribute('value', event[0].categorie);
             statut.setAttribute('value', event[0].statut);
-            nbMaj.setAttribute('value', event[0].nbMaj);
+            nbMaj.setAttribute('value', event[0].nbMaj.toString());
         });
     
 })()
@@ -27,7 +27,7 @@ const time = document.getElementById('eventTime') as HTMLInputElement
 const id = document.getElementById('eventId') as HTMLInputElement
 const dateFin = document.getElementById('eventDatefin') as HTMLInputElement
 const timeFin = document.getElementById('eventTimefin') as HTMLInputElement
-const location = document.getElementById('eventLieu') as HTMLInputElement
+const lieu = document.getElementById('eventLieu') as HTMLInputElement
 const categorie = document.getElementById('eventcategorie') as HTMLInputElement
 const statut = document.getElementById('eventStatus') as HTMLInputElement
 const nbMaj = document.getElementById('eventnbmaj') as HTMLInputElement
@@ -45,8 +45,9 @@ supprimer.addEventListener('click', async (event) => {
 
 valider.addEventListener('click', (event) => {
     event.preventDefault();
-    const values = "description = '"+description.value+"', titre = '"+titre.value+"', date_deb = '"+date.value+" "+time.value+":00"+"', date_fin = '"+dateFin.value+" "+timeFin.value+":00"+"', location = '"+location.value+"', categorie = '"+categorie.value+"', statut = '"+statut.value+"', nbMaj= '"+((parseInt(nbMaj.value)+1).toString())+"'";
-    const valuesAjout = "('"+description.value+"', '"+titre.value+"', '"+date.value+" "+time.value+":00"+"', '"+dateFin.value+" "+timeFin.value+":00"+"', '"+location.value+"', '"+categorie.value+"', '"+statut.value+"', 1)";
+    const values = "description = '"+description.value+"', titre = '"+titre.value+"', date_deb = '"+date.value+" "+time.value+":00"+"', date_fin = '"+dateFin.value+" "+timeFin.value+":00"+"', location = '"+lieu.value+"', categorie = '"+categorie.value+"', statut = '"+statut.value+"', nbMaj= "+((parseInt(nbMaj.value)+1))+"";
+    const valuesAjout = "('"+description.value+"', '"+titre.value+"', '"+date.value+" "+time.value+":00"+"', '"+dateFin.value+" "+timeFin.value+":00"+"', '"+lieu.value+"', '"+categorie.value+"', '"+statut.value+"', 1)";
+    console.log(values);
     
     if (id.value.length > 0) {
         window.electron.modifieEvent(id.value, values);

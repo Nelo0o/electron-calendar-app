@@ -2,11 +2,11 @@ export interface IEvent {
     id: number;
     titre: string;
     description: string;
-    date_deb: Date;
-    date_fin: Date;
+    date_deb: string;
+    date_fin: string;
     location: string;
     categorie: string;
-    status: string;
+    statut: string;
     transparence: string;
     nbMaj: number;
 }

@@ -24,13 +24,13 @@ export function CreateDb(): void {
     createTable.run();
 }
 
-export function CheckDB() {
+export function CheckDB(): number {
 
     const rqCreate = `SELECT count(*) as count FROM sqlite_master WHERE type='table' AND name='event'`;
 
     const checkTable = db.prepare(rqCreate);
 
-    const logCheck =  checkTable.all();
+    const logCheck  =  checkTable.all();
 
     return logCheck[0].count
 }

@@ -1,12 +1,11 @@
 import * as calendar from 'node-ical'
-import { ICSEvent } from '../interfaces/ICSEvent';
+import { ICSEvenement } from '../interfaces/ICSEvent';
 import { IEvent } from '../interfaces/IEvents';
-import path from 'path';
 
 export function readICS(chemin: Array<string>) : Array<IEvent> {
 
 
-    const events: Array<ICSEvent> = calendar.sync.parseFile(chemin[0]);
+    const events: Array<ICSEvenement> = calendar.sync.parseFile(chemin[0]);
 
     console.log(events);
     const lesValues: Array<IEvent> = [];
@@ -22,9 +21,11 @@ export function readICS(chemin: Array<string>) : Array<IEvent> {
             const objetICS = {
                 titre: event.summary,
                 description:  event.description,
-                date: dateFR.format(event.start),
-                time: new Date(event.start).toLocaleTimeString("fr-FR")
+                date_deb: dateFR.format(event.start),
+                date_fin: dateFR.format(event.end),
+                location: event.location
             }
+
             
             lesValues.push(objetICS);
         }

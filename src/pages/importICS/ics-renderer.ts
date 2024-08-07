@@ -1,7 +1,5 @@
 import { IEvent } from "../../interfaces/IEvents";
 
-console.log('ICS-RENDERER');
-
 (async () => {
     const lesEvents = await window.electron.getEventFromICS()
 
@@ -12,18 +10,19 @@ console.log('ICS-RENDERER');
         lesEvents.forEach((evenement: IEvent) => {
             contenuHTML += `
                 <br>
-                <h2>${evenement.titre}</h2>
-                <p>${evenement.description}</p>
-                <p>Date : ${evenement.date}</p>
-                <p>Heure : ${evenement.time}</p>
+                <h2>Titre : ${evenement.titre}</h2>
+                <p>Descrition : ${evenement.description}</p>
+                <p>Date de début : ${evenement.date_deb}</p>
+                <p>Date de fin : ${evenement.date_fin}</p>
+                <p>Lieu : ${evenement.location}</p>
                 <br>
                 <hr>
             `;
 
             if (lesValeurs == "") {
-                lesValeurs += "('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date+"', '"+evenement.time+"')";
+                lesValeurs += "('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date_deb+"', '"+evenement.date_fin+"', '"+evenement.location+"')";
             } else {
-                lesValeurs += ", ('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date+"', '"+evenement.time+"')";
+                lesValeurs += ", ('"+evenement.titre+"', '"+evenement.description+"', '"+evenement.date_deb+"', '"+evenement.date_fin+"', '"+evenement.location+"')";
             }
         });
 
@@ -32,7 +31,7 @@ console.log('ICS-RENDERER');
         const valider = document.getElementById('importer');
 
         valider.addEventListener('click', () => {
-            window.electron.ajoutEvent('evenements',"titre, description, date, time", lesValeurs)
+            window.electron.ajoutEvent('event',"titre, description, date_deb, date_fin, location", lesValeurs)
             
         })
     

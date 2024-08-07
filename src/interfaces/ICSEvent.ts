@@ -1,5 +1,7 @@
-export interface ICSEvent {
+export interface ICSEvenement {
     summary: string;
     description: string;
-    start: Date;
+    location: string;
+    dtstart: Date;
+    dtend: Date;
 }

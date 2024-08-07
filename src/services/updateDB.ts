@@ -6,8 +6,6 @@ export function AjouteLigneCustom(laTable = 'event', lesChamps = "titre, descrip
     const db = new Database('agenda.db');
 
     const rqAjout = "INSERT INTO "+laTable+" ("+lesChamps+") VALUES "+lesValeurs+"";
-
-    console.log(rqAjout);
     
     const addRow = db.prepare(rqAjout);
 

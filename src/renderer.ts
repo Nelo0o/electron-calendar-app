@@ -25,7 +25,7 @@
  *  });
  * ```
  */
-import './components/calendar';
+
 import { renderCalendar, fillEvents, displayEventsForDay } from './components/calendar';
 
 window.electron.onRefreshData(() => {

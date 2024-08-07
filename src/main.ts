@@ -126,7 +126,7 @@ ipcMain.handle('show-confirmation-dialog', async (event, message) => {
   return result.response === 0;
 });
 
-function OpenModale (arg) {
+function OpenModale (arg: any) {
   const eventModal = new BrowserWindow({
     width: 900,
     height: 600,

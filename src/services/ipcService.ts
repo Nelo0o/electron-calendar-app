@@ -1,6 +1,5 @@
 import { BrowserWindow, ipcMain } from "electron";
 import { getEventById, getEventsByMonth, getEventByDay } from "./readDB";
-import { IEvent } from "../interfaces/IEvents";
 import { AjouteLigneCustom, ModifieLigne, SupprimeLigne } from "./updateDB";
 
 

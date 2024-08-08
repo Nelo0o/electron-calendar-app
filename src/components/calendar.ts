@@ -1,8 +1,6 @@
 // calendar.ts
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from 'date-fns';
 
-console.log("calendar api", window.electron);
-
 const calendarContent: HTMLElement | null = document.getElementById('calendarContent');
 const prevMonthButton: HTMLElement | null = document.getElementById('prevMonth');
 const nextMonthButton: HTMLElement | null = document.getElementById('nextMonth');
@@ -17,22 +15,14 @@ function createEventIndicator(): HTMLElement {
     return eventIndicator;
 }
 
-
-
 function fillEvents(month: Date): void {
-
-    const lesEvents =  window.electron.getEventsByMonth(month.getMonth()).then((event) => {
-
+    const lesEvents = window.electron.getEventsByMonth(month.getMonth()).then((event) => {
         event.forEach(lEvent => {
-
             if (document.getElementById(lEvent.date_deb.slice(0, 10))) {
-
                 const lejour: HTMLElement = document.getElementById(lEvent.date_deb.slice(0, 10));
                 const eventIndicator = createEventIndicator();
-
                 lejour.appendChild(eventIndicator);
             }
-
         })
     }).catch(error => {
         console.error("Erreur lors de la récupération des événements :", error);
@@ -60,7 +50,6 @@ function displayEventsForDay(date: Date): void {
             eventList.appendChild(noEventItem);
         } else {
             events.forEach(event => {
-                
                 const eventItem = document.createElement('li');
                 eventItem.textContent = `${event.date_deb.slice(11, 16)} - ${event.titre}`;
                 eventList.appendChild(eventItem);
@@ -86,7 +75,7 @@ function displayEventsForDay(date: Date): void {
     }
 }
 
-function renderCalendar(date: Date): void {    
+function renderCalendar(date: Date): void {
     const startMonth: Date = startOfMonth(date);
     const endMonth: Date = endOfMonth(date);
     const startDate: Date = startOfWeek(startMonth);
@@ -110,37 +99,31 @@ function renderCalendar(date: Date): void {
                 } else {
                     lejour = "0" + monthIndex;
                 }
-                let zero ="";
+                let zero = "";
                 if (day.getDate() < 10) {
-                    zero ="0";
+                    zero = "0";
                 }
                 dayElement.setAttribute("id", day.getFullYear() + "-" + lejour + "-" + zero + day.getDate());
                 dayElement.textContent = format(day, 'd');
-                
-                let estPasse = false
 
                 if (day >= startMonth && day <= endMonth) {
                     calendarContent.appendChild(dayElement);
                     if (isSameDay(day, new Date())) {
                         dayElement.classList.add('currentDay');
-                        displayEventsForDay(date);
-                        estPasse = true;
                     }
                 } else {
                     dayElement.classList.add('otherMonthDay');
                     calendarContent.appendChild(dayElement);
                 }
 
-                if (!estPasse) {
-                    dayElement.addEventListener('click', () => {
-                        if (selectedDayElement) {
-                            selectedDayElement.classList.remove('selected-day');
-                        }
-                        dayElement.classList.add('selected-day');
-                        selectedDayElement = dayElement;
-                        displayEventsForDay(day);
-                    });
-                }
+                dayElement.addEventListener('click', () => {
+                    if (selectedDayElement) {
+                        selectedDayElement.classList.remove('selected-day');
+                    }
+                    dayElement.classList.add('selected-day');
+                    selectedDayElement = dayElement;
+                    displayEventsForDay(day); // Afficher les événements pour le jour cliqué
+                });
             });
             calendarContent.classList.remove('transition');
             calendarContent.classList.add('is-visible');
@@ -173,6 +156,7 @@ if (currentMonthDisplay) {
 if (prevMonthButton) {
     prevMonthButton.addEventListener('click', () => {
         currentMonth = subMonths(currentMonth, 1);
+        localStorage.setItem('currentMonth', currentMonth.toISOString());
         renderCalendar(currentMonth);
         updateMonthDisplay(currentMonth);
     });
@@ -181,15 +165,13 @@ if (prevMonthButton) {
 if (nextMonthButton) {
     nextMonthButton.addEventListener('click', () => {
         currentMonth = addMonths(currentMonth, 1);
+        localStorage.setItem('currentMonth', currentMonth.toISOString());
         renderCalendar(currentMonth);
         updateMonthDisplay(currentMonth);
     });
 }
 
-if (calendarContent) {
-    calendarContent.classList.add('is-visible');
-}
-
 renderCalendar(currentMonth);
+updateMonthDisplay(currentMonth);
 
 export { renderCalendar, fillEvents, displayEventsForDay };

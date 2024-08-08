@@ -28,9 +28,17 @@
 
 import { renderCalendar, fillEvents, displayEventsForDay } from './components/calendar';
 
+let currentCalendarDate = new Date();
+
 window.electron.onRefreshData(() => {
-    const currentMonth = new Date();
-    renderCalendar(currentMonth);
-    displayEventsForDay(currentMonth);
-    fillEvents(currentMonth);
+    const storedMonth = localStorage.getItem('currentMonth');
+
+    if (storedMonth) {
+        currentCalendarDate = new Date(storedMonth);
+    } else {
+        currentCalendarDate = new Date();
+    }
+    renderCalendar(currentCalendarDate);
+    displayEventsForDay(currentCalendarDate);
+    fillEvents(currentCalendarDate);
 });
